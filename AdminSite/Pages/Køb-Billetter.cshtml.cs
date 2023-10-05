@@ -1,31 +1,27 @@
-using Microsoft.AspNetCore.Mvc;
+using AdminSite.Controller;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Data.SqlClient;
+
 
 namespace AdminSite.Pages
 {
     public class Køb_BilletterModel : PageModel
     {
-        public void OnGet()
+        KøbsController ticket = new KøbsController();
+
+        public string Price1()
         {
-            //string datasource = @"LAPTOP-94N0K9HA\MSSQLSERVER01"; // Test on local pc
-            string connString = @"Data Source=LAPTOP-94N0K9HA\MSSQLSERVER01;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
-            SqlConnection conn = new SqlConnection(connString); // Makes a new connection to Database
-
-            try
-            {
-                conn.Open(); // if theres a connection it opens it
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                conn.Close();
-            }
+            string price = ticket.TicketsConnect(1);
+            return price;
+        }
+        public string Price2()
+        {
+            string price = ticket.TicketsConnect(2);
+            return price;
+        }
+        public string Price3()
+        {
+            string price = ticket.TicketsConnect(3);
+            return price;
         }
     }
 }
