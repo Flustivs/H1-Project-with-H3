@@ -6,8 +6,7 @@ namespace AdminSite.Pages
 {
     public class Køb_BilletterModel : PageModel
     {
-        KøbsController ticket = new KøbsController();
-
+        PriceManager ticket = new PriceManager();
         public string Price1()
         {
             string price = ticket.TicketsConnect(1);

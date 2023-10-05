@@ -1,9 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminSite.Controller
 {
-    public class KøbsController
+    public class PriceManager
     {
         private string _ticketvalue;
         public string TicketsConnect(byte i)
