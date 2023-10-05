@@ -1,0 +1,52 @@
+﻿/* Centering the login form */
+.registrer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+/* Login */
+.registrer-form {
+    height: 330px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
+}
+
+    .registrer-form:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+/* Additional styling for the login form */
+.registrer-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.registrer-input {
+    width: 80%;
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.registrer-button {
+    background-color: #0074D9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .registrer-button:hover {
+        background-color: #0056b3;
+    }

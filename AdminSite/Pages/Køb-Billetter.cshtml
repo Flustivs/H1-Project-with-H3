@@ -1,0 +1,61 @@
+﻿@page
+@model AdminSite.Pages.Køb_BilletterModel
+@{
+    ViewData["Title"] = "Køb Billetter - SFFP";
+}
+
+<div class="header">
+    <h1>Køb Billetter</h1>
+</div>
+<hr />
+
+<div class="mainContainer">
+    @* Maintenance Box in the left side *@
+    <div class="dailyPass">
+        <a class="dailyPassBigtext">Dagpas</a>
+        <p>Fra<br />
+            175 DKK
+        </p>
+        <hr class="dailyPassHR" />
+        <p class="dailyPassText">
+            * Børn 3 - 7 år, fra 70 DKK<br />
+            * Børn under 3 år, har gratis Entré
+        </p>
+        <a href="#DailyPass" class="dailyPassButton">
+            <span>Køb nu</span>
+        </a>
+    </div>
+
+    @* News Box in the middle *@
+    <div class="monthlyPass">
+        <a class="monthlyPassBigtext">Månedpas</a>
+        <p>Fra<br />
+            350 DKK
+        </p>
+        <hr class="monthlyPassHR" />
+        <p class="monthlyPassText">
+           * Børn i alderen 0-1 år, kan køre uden et Dag, Måned eller Årpas<br />
+           * Et Månedpas varer kun 30 dage
+        </p>
+        <a href="#MonthlyPass" class="monthlyPassButton">
+            <span>Køb nu</span>
+        </a>
+    </div>
+
+    @* Open or Closed Box in the right side *@
+    <div class="yearlyPass">
+        <a class="yearlyPassBigtext">Årpas</a>
+        <p>Fra<br />
+            1570 DKK
+        </p>
+        <hr class="yearlyPassHR" />
+        <p class="yearlyPassText">
+            * Indeholder altid Månedpas<br />
+            * Køb indenfor sæsonen og spar 304 DKK
+        </p>
+        <a href="#YearlyPass" class="yearlyPassButton">
+            <span>Køb nu</span>
+        </a>
+    </div>
+</div>
+

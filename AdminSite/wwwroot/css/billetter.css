@@ -1,0 +1,102 @@
+﻿.header h1 {
+    text-align: center;
+}
+
+hr {
+    top: 20px;
+    border: none;
+    height: 2px;
+    width: 1000px;
+    background: black;
+    margin-bottom: 50px;
+}
+
+/* Entre Billet */
+
+.dailyPassHR {
+    width: 550px;
+    margin: 30px;
+}
+
+.dailyPass {
+    flex: 1;
+    height: 270px;
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .dailyPass:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+
+
+.dailyPassBigtext {
+    font-size: 30px;
+    color: black;
+}
+
+
+/* Middle box */
+.monthlyPassBigtext {
+    font-size: 30px;
+    color: black;
+}
+
+.monthlyPass {
+    flex: 1;
+    height: 270px;
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .monthlyPass:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+.monthlyPassHR {
+    width: 550px;
+    margin: 30px;
+}
+
+/* Open or Closed */
+
+.yearlyPass {
+    flex: 1;
+    height: 270px;
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .yearlyPass:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+.yearlyPassHR {
+    width: 550px;
+    margin: 30px;
+}
+
+.yearlyPassBigtext {
+    font-size: 30px;
+    color: black;
+}
+

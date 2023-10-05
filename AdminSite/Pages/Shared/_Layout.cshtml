@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/nav.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/aboutus.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/billetter.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/buttons.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/forlystelser.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/registrer.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/background.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/registrer.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/adminpanel.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <ul>
+                <li><a asp-page="/Index">Hjem</a></li>
+                <li><a asp-page="/AboutUs">Om SFFP</a></li>
+                <li><a asp-page="/AdminPanel">Admin Panel</a></li>
+                <li><a asp-page="/StaffPanel">Staff Panel</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Information</a>
+                    <div class="dropdown-content">
+                        <a asp-page="/Forlystelser">Forlystelser</a>
+                        <a asp-page="/Køb-Billetter">Køb billetter</a>
+                    </div>
+                </li>
+                <li class="login">
+                    <a href="javascript:void(0)" class="dropbtn-login">Login</a>
+                    <div class="login-content">
+                        <a asp-page="/Registrer">Registrer</a>
+                        <a asp-page="/Login">Login</a>
+                    </div>
+                </li>
+                <li class="language">
+                    <a href="javascript:void(0)" class="dropbtn-language">Sprog</a>
+                    <div class="language-content">
+                        <a href="#Dansk">Dansk</a>
+                        <a href="#Engelsk">Engelsk</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <div class="footer">
+        <hr class="hrF" />
+        <p>&copy; 2023 Super Fun Fun Park. Alle rettigheder forbeholdes.</p>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

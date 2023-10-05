@@ -1,0 +1,10 @@
+﻿#bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-image: url("/images/background.png");
+    object-fit: contain;
+    filter: blur(8px);
+    /* -webkit-filter: blur(8px); */
+}

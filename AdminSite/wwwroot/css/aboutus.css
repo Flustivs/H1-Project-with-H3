@@ -1,0 +1,88 @@
+﻿/* Left Box */
+
+.leftBoxHR {
+    width: 550px;
+    margin: 30px;
+}
+
+.leftBox {
+    flex: 1;
+    height: 210px;
+    width: 310px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .leftBox:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+
+
+.leftBoxBigtext {
+    font-size: 30px;
+    color: black;
+}
+
+
+/* Middle box */
+.middleBoxBigtext {
+    font-size: 30px;
+    color: black;
+}
+
+.middleBox {
+    flex: 1;
+    height: 210px;
+    width: 310px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .middleBox:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+.middleBoxHR {
+    width: 550px;
+    margin: 30px;
+}
+
+/* Open or Closed */
+
+.rightBox {
+    flex: 1;
+    height: 210px;
+    width: 310px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .rightBox:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+.rightBoxHR {
+    width: 550px;
+    margin: 30px;
+}
+
+.rightBoxBigtext {
+    font-size: 30px;
+    color: black;
+}

@@ -1,0 +1,71 @@
+﻿.header h1 {
+    text-align: center;
+}
+
+hr {
+    top: 20px;
+    border: none;
+    height: 2px;
+    width: 1000px;
+    background: black;
+    margin-bottom: 50px;
+}
+
+.forlystelsesHR {
+    width: 940px;
+    margin: 30px;
+}
+
+/* Main Container */
+.mainContainerForlystelser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Forlystelser */
+.goGoRollercoaster,
+.deepDeepFallDropTower,
+.superSwimmingPool,
+.ultimateRestrooms {
+    /*flex: 1;*/
+    height: 550px;
+    width: 1000px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .goGoRollercoaster:hover,
+    .deepDeepFallDropTower:hover,
+    .superSwimmingPool:hover,
+    .ultimateRestrooms:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+/* Horizontal Rule */
+.goGoRollercoasterHR,
+.deepDeepFallDropTowerHR,
+.superSwimmingPoolHR,
+.ultimateRestroomsHR {
+    width: 550px;
+    margin: 30px;
+}
+
+/* Big Text Styles */
+.bigtext {
+    font-size: 25px;
+    color: black;
+}
+
+/* Images */
+
+/* Go Go Rollercoaster */
+img {
+    border-radius: 30%;
+}

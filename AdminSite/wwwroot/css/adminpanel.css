@@ -1,0 +1,75 @@
+﻿.top-row {
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: center;
+}
+
+.priceBoxHR, .assigmentsBoxHR {
+    width: 860px;
+    margin: 30px;
+}
+
+.priceBox, .assigmentsBox {
+    flex: 1;
+    height: 310px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .priceBox:hover, .assigmentsBox:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+.priceBoxBigtext, .assigmentsBoxBigtext {
+    font-size: 30px;
+    color: black;
+}
+
+.ticketsBoxHR, .workersBoxHR {
+    width: 860px;
+    margin: 30px;
+}
+
+.ticketsBox, .workersBox {
+    flex: 1;
+    height: 250px;
+    width: calc(50% - 20px);
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .ticketsBox:hover, .workersBox:hover {
+        transform: scale(1.05);
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.7);
+    }
+
+.ticketsBoxBigtext, .workersBoxBigtext {
+    font-size: 30px;
+    color: black;
+}
+
+.priceBoxText {
+    font-size: 20px;
+}
+
+.workersBox {
+    height: 350px;
+}
+
+.ticketsBox {
+    height: 350px;
+}

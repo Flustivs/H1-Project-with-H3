@@ -1,0 +1,62 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Hjem - SFFP";
+}
+
+<div id="bg"></div>
+
+<div class="header">
+    <h1>Super Fun Fun Park</h1>
+</div>
+<hr />
+
+<div class="mainContainer">
+    @* Maintenance Box in the left side *@
+    <div class="maintenanceBox">
+        <a class="maintenanceBigtext">Næste vedligeholdelse</a>
+        <hr class="maintenanceHR" />
+        <a class="maintenanceDate">3 November 2023</a>
+        <br />
+        <a class="maintenanceClock">Klokken 06:00 - 12:30</a>
+    </div>
+
+    @* News Box in the middle *@
+    <div class="newsBox">
+        <a class="newsBigtext">Nyhedsboks</a>
+        <hr class="newsHR" />
+        <a>
+            "SuperFunFunPark: Et Nyt Eventyr Begynder! Oplev Spændingen i Danmarks Nyeste Forlystelsespark"<br />
+            <br />
+            Danmark har netop budt velkommen til sit seneste skattekammer af underholdning og spænding med åbningen af SuperFunFunPark. Dette imponerende forlystelsesmekka lover at tage gæster med på en utrolig rejse gennem fantastiske verdener af sjov og eventyr.<br />
+            <br />
+            Med forlystelser for alle aldre, fra adrenalinsusende rutsjebaner til børnevenlige karuseller, er SuperFunFunPark det perfekte sted for familier, venner og eventyrlystne sjæle. Parken byder også på kulinariske oplevelser fra gourmetmadboder til lækre snacks.<br />
+            <br />
+            Så pak din eventyrlyst og smilene ind, og sæt kursen mod SuperFunFunPark, hvor eventyret aldrig stopper, og magien venter rundt om hvert hjørne. Velkommen til et nyt kapitel i forlystelsesverdenen!
+        </a>
+    </div>
+
+    @* Open or Closed Box in the right side *@
+    <div class="openTime">
+        <a class="openBigtext">Åbningstider</a>
+        <div id="curr_date">
+            <script>
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = new Date().toLocaleDateString('da-DK', options);
+                const correctedDate = formattedDate.replace(/\b\w/g, (c) => c.toUpperCase());
+                document.getElementById("curr_date").innerHTML = correctedDate;
+            </script>
+        </div>
+        <hr class="openHR" />
+        <p class="openingTime">
+            Mandag     09:00 - 21:00<br />
+            Tirsdag     09:00 - 21:00<br />
+            Onsdag      09:00 - 21:00<br />
+            Torsdag     09:00 - 21:00<br />
+            Fredag      09:00 - 22:00<br />
+            Lørdag      08:00 - 23:00<br />
+            Søndag      10:30 - 20:00
+        </p>
+    </div>
+</div>
+

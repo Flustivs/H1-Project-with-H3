@@ -1,0 +1,193 @@
+﻿/* Daily Pass Button */
+.dailyPassButton {
+    display: inline-block;
+    padding: 5px 20px;
+    background-color: #008000; /* Baggrundsfarve */
+    color: #fff; /* Tekstfarve */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Afrundede hjørner */
+    border: 2px solid #008000; /* Kantlinje */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+    .dailyPassButton:hover {
+        background-color: #0056b3; /* Ændrer baggrundsfarven ved hover */
+        border-color: #0056b3; /* Ændrer kantlinjefarven ved hover */
+        transform: scale(1.05); /* Ændrer knappens størrelse ved hover */
+    }
+
+    .dailyPassButton span {
+        display: block;
+        padding: 5px 0;
+    }
+
+/* Monthly Pass Button */
+.monthlyPassButton {
+    display: inline-block;
+    padding: 5px 20px;
+    background-color: #008000; /* Baggrundsfarve */
+    color: #fff; /* Tekstfarve */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Afrundede hjørner */
+    border: 2px solid #008000; /* Kantlinje */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+    .monthlyPassButton:hover {
+        background-color: #0056b3; /* Ændrer baggrundsfarven ved hover */
+        border-color: #0056b3; /* Ændrer kantlinjefarven ved hover */
+        transform: scale(1.05); /* Ændrer knappens størrelse ved hover */
+    }
+
+    .monthlyPassButton span {
+        display: block;
+        padding: 5px 0;
+    }
+
+
+/* Yearly Pass Button */
+.yearlyPassButton {
+    display: inline-block;
+    padding: 5px 20px;
+    background-color: #008000; /* Baggrundsfarve */
+    color: #fff; /* Tekstfarve */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Afrundede hjørner */
+    border: 2px solid #008000; /* Kantlinje */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+    .yearlyPassButton:hover {
+        background-color: #0056b3; /* Ændrer baggrundsfarven ved hover */
+        border-color: #0056b3; /* Ændrer kantlinjefarven ved hover */
+        transform: scale(1.05); /* Ændrer knappens størrelse ved hover */
+    }
+
+    .yearlyPassButton span {
+        display: block;
+        padding: 5px 0;
+    }
+
+/* Monthly Pass Button */
+.editPriceButton {
+    display: inline-block;
+    margin: 20px;
+    padding: 1px 10px;
+    background-color: #008000; /* Baggrundsfarve */
+    color: #fff; /* Tekstfarve */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Afrundede hjørner */
+    border: 2px solid #008000; /* Kantlinje */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+    .editPriceButton:hover {
+        background-color: #0056b3; /* Ændrer baggrundsfarven ved hover */
+        border-color: #0056b3; /* Ændrer kantlinjefarven ved hover */
+        transform: scale(1.05); /* Ændrer knappens størrelse ved hover */
+    }
+
+    .editPriceButton span {
+        display: block;
+        padding: 4px 0;
+    }
+
+.saveButton {
+    display: inline-block;
+    margin: 5px;
+    padding: 1px 10px;
+    background-color: #008000; /* Baggrundsfarve */
+    color: #fff; /* Tekstfarve */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Afrundede hjørner */
+    border: 2px solid #008000; /* Kantlinje */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+    .saveButton:hover {
+        background-color: #0056b3; /* Ændrer baggrundsfarven ved hover */
+        border-color: #0056b3; /* Ændrer kantlinjefarven ved hover */
+        transform: scale(1.05); /* Ændrer knappens størrelse ved hover */
+    }
+
+    .saveButton span {
+        display: block;
+        padding: 4px 0;
+    }
+
+.editButton {
+    display: inline-block;
+    margin: 5px;
+    padding: 1px 10px;
+    background-color: #008000; /* Baggrundsfarve */
+    color: #fff; /* Tekstfarve */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Afrundede hjørner */
+    border: 2px solid #008000; /* Kantlinje */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+    .editButton:hover {
+        background-color: #0056b3; /* Ændrer baggrundsfarven ved hover */
+        border-color: #0056b3; /* Ændrer kantlinjefarven ved hover */
+        transform: scale(1.05); /* Ændrer knappens størrelse ved hover */
+    }
+
+    .editButton span {
+        display: block;
+        padding: 4px 0;
+    }
+
+.deleteButton {
+    display: inline-block;
+    margin: 5px;
+    padding: 1px 10px;
+    background-color: #008000; /* Baggrundsfarve */
+    color: #fff; /* Tekstfarve */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Afrundede hjørner */
+    border: 2px solid #008000; /* Kantlinje */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+    .deleteButton:hover {
+        background-color: #0056b3; /* Ændrer baggrundsfarven ved hover */
+        border-color: #0056b3; /* Ændrer kantlinjefarven ved hover */
+        transform: scale(1.05); /* Ændrer knappens størrelse ved hover */
+    }
+
+    .deleteButton span {
+        display: block;
+        padding: 4px 0;
+    }
+
+
+
+
+
+
+
+
+
+

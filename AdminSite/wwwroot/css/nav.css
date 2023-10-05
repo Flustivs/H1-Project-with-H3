@@ -1,0 +1,157 @@
+﻿body {
+    background-color: white;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid black;
+    text-align: center;
+}
+
+li {
+    float: left;
+}
+
+
+    li a, .dropbtn {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: green;
+            border: 1px solid black;
+        }
+
+    li.dropdown {
+        display: inline-block;
+    }
+
+/* Dropdown css to information section */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        .dropdown-content a:hover {
+            background-color: green;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown css for the login and register section */
+.login {
+    float: right;
+}
+
+li a, .dropbtn-login {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+    li a:hover, .login:hover .dropbtn-login {
+        background-color: green;
+        border: 1px solid black;
+    }
+
+li.login {
+    display: inline-block;
+}
+
+.login-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .login-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        .login-content a:hover {
+            background-color: green;
+        }
+
+.login:hover .login-content {
+    display: block;
+}
+
+/* Dropdown css for the language section */
+.language {
+    float: right;
+}
+
+li a, .dropbtn-language {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+    li a:hover, .language:hover .dropbtn-language {
+        background-color: green;
+        border: 1px solid black;
+    }
+
+li.language {
+    display: inline-block;
+}
+
+.language-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .language-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        .language-content a:hover {
+            background-color: green;
+        }
+
+.language:hover .language-content {
+    display: block;
+}
