@@ -14,7 +14,7 @@
     <div class="dailyPass">
         <a class="dailyPassBigtext">Dagpas</a>
         <p>Fra<br />
-            175 DKK
+            @Model.Price1()
         </p>
         <hr class="dailyPassHR" />
         <p class="dailyPassText">
@@ -30,7 +30,7 @@
     <div class="monthlyPass">
         <a class="monthlyPassBigtext">Månedpas</a>
         <p>Fra<br />
-            350 DKK
+            @Model.Price2()
         </p>
         <hr class="monthlyPassHR" />
         <p class="monthlyPassText">
@@ -40,13 +40,14 @@
         <a href="#MonthlyPass" class="monthlyPassButton">
             <span>Køb nu</span>
         </a>
+        
     </div>
 
     @* Open or Closed Box in the right side *@
     <div class="yearlyPass">
         <a class="yearlyPassBigtext">Årpas</a>
         <p>Fra<br />
-            1570 DKK
+            @Model.Price3()
         </p>
         <hr class="yearlyPassHR" />
         <p class="yearlyPassText">
@@ -56,6 +57,7 @@
         <a href="#YearlyPass" class="yearlyPassButton">
             <span>Køb nu</span>
         </a>
+        
     </div>
 </div>
 

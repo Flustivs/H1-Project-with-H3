@@ -1,13 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AdminSite.Controller
 {
     public class AboutController
     {
-        static string columnValue;
-        public string connect(byte i)
+        static string _columnValue;
+        public string Connect(byte i)
         {
             //string datasource = @"LAPTOP-94N0K9HA\MSSQLSERVER01"; // Test on local pc
             string connString = @"Data Source=LAPTOP-94N0K9HA\MSSQLSERVER01;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
@@ -16,7 +14,7 @@ namespace AdminSite.Controller
             try
             {
                 conn.Open(); // if theres a connection it opens it
-
+                // Variables for the about section on the website
                 string english1 = "SELECT aboutUsTranslationText FROM tblAboutUsTranslation WHERE aboutUsTranslationID = 1";
                 string english2 = "SELECT aboutUsTranslationText FROM tblAboutUsTranslation WHERE aboutUsTranslationID = 2";
                 string english3 = "SELECT aboutUsTranslationText FROM tblAboutUsTranslation WHERE aboutUsTranslationID = 3";
@@ -54,7 +52,7 @@ namespace AdminSite.Controller
             {
                 conn.Close();
             }
-            return columnValue;
+            return _columnValue;
         }
         private string GetAboutUs(string box, SqlConnection conn)
         {
@@ -63,10 +61,10 @@ namespace AdminSite.Controller
             {
                 while (reader.Read())
                 {
-                    columnValue = reader["aboutUsTranslationText"].ToString();
+                    _columnValue = reader["aboutUsTranslationText"].ToString();
                 }
             }
-            return columnValue;
+            return _columnValue;
         }
     }
 }

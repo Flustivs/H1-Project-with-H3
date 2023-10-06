@@ -20,7 +20,7 @@ hr {
 
 .dailyPass {
     flex: 1;
-    height: 270px;
+    height: 300px;
     width: 300px;
     margin: 10px;
     border-radius: 10px;
@@ -51,7 +51,7 @@ hr {
 
 .monthlyPass {
     flex: 1;
-    height: 270px;
+    height: 300px;
     width: 300px;
     margin: 10px;
     border-radius: 10px;
@@ -75,7 +75,7 @@ hr {
 
 .yearlyPass {
     flex: 1;
-    height: 270px;
+    height: 300px;
     width: 300px;
     margin: 10px;
     border-radius: 10px;
