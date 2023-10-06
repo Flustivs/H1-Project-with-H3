@@ -6,6 +6,7 @@
 
 <div class="header">
     <h1>Køb Billetter</h1>
+    <link rel="stylesheet" href="~/css/TicketBox.css" />
 </div>
 <hr />
 
@@ -21,9 +22,25 @@
             * Børn 3 - 7 år, fra 70 DKK<br />
             * Børn under 3 år, har gratis Entré
         </p>
-        <a href="#DailyPass" class="dailyPassButton">
-            <span>Køb nu</span>
-        </a>
+        @*<form method="post">
+            <a href="#DailyPass" class="dailyPassButton">
+                <span>Køb nu</span>
+            </a>
+        </form>*@
+        
+        <form method="post">
+            <a href="#DailyPassPopup" class="dailyPassButton">
+                <span>Køb nu</span>
+            </a>
+        </form>
+
+        <div id="DailyPassPopup" class="popup">
+            <div class="popup-content">
+                <span class="close"><a href="#">×</a></span>
+                <h2>Billet ´Køb</h2>
+                <p>Hvor mange billetter ville du købe</p>
+            </div>
+        </div>
     </div>
 
     @* News Box in the middle *@

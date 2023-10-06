@@ -1,4 +1,5 @@
 using AdminSite.Controller;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
@@ -23,10 +24,10 @@ namespace AdminSite.Pages
             return price;
         }
 
-        public string TestClick()
+        public IActionResult OnPost()
         {
-            Console.WriteLine("clicked..");
-            return "";
+            Console.WriteLine("Clicked...");
+            return Page();
         }
     }
 }
