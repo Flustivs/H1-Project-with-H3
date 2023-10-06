@@ -1,0 +1,39 @@
+﻿/* Other CSS styles */
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+    .popup:target {
+        display: block;
+    }
+
+.popup-content {
+    /* You can remove these styles as they are inherited from .popup */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .close a {
+        text-decoration: none;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+    }

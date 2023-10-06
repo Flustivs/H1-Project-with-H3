@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.SqlClient;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminSite.Controller
@@ -10,7 +9,7 @@ namespace AdminSite.Controller
         public string TicketsConnect(byte i)
         {
             //string datasource = @"LAPTOP-94N0K9HA\MSSQLSERVER01"; // Test on local pc
-            string connString = @"Data Source=LAPTOP-94N0K9HA\MSSQLSERVER01;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
+            string connString = @"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
             SqlConnection conn = new SqlConnection(connString); // Makes a new connection to Database
 
             try
