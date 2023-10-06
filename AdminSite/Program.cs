@@ -1,7 +1,11 @@
+using AdminSite.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.Configure<ConnectionString>(builder.Configuration.GetSection("ConnectionStrings"));
 
 var app = builder.Build();
 
