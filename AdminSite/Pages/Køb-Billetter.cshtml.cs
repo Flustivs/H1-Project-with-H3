@@ -22,5 +22,11 @@ namespace AdminSite.Pages
             string price = ticket.TicketsConnect(3);
             return price;
         }
+
+        public string TestClick()
+        {
+            Console.WriteLine("clicked..");
+            return "";
+        }
     }
 }
