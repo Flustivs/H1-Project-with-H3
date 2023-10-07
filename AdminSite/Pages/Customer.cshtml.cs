@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminSite.Pages
 {
-    public class StaffPanelModel : PageModel
+    public class CustomerModel : PageModel
     {
         public void OnGet()
         {
-
-
         }
     }
 }
