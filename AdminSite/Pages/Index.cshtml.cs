@@ -2,6 +2,8 @@
 using AdminSite.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Win32;
+using System;
 
 namespace AdminSite.Pages
 {
@@ -10,10 +12,34 @@ namespace AdminSite.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly PersonManager _personmanager;
 
+        /// <summary>
+        /// PersonManager class instance is injected into the IndexModel class using ASP.NET Core's dependency injection system.
+        /// ILogger<IndexModel> and PersonManager are constructor parameters. 
+        /// These parameters represent the dependencies that the IndexModel class needs. 
+        /// When an instance of IndexModel is created, 
+        /// the ASP.NET Core framework automatically provides implementations for these dependencies.
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="personManager"></param>
         public IndexModel(ILogger<IndexModel> logger, PersonManager personManager)
         {
+            /* ILogger<IndexModel>:
+             * ILogger<T> is a built-in logging interface provided by ASP.NET Core. 
+             * It allows classes to log information, warnings, errors, etc. 
+             * Injecting ILogger<IndexModel> allows the IndexModel class to perform logging operations.
+             */
             _logger = logger;
+
+            /*  PersonManager:
+             *  PersonManager is a custom class, likely used for managing user data, such as retrieving, adding, or updating user information in a database. 
+             *  By injecting an instance of PersonManager, the IndexModel class can interact with the user data through the methods provided by PersonManager.
+            */
             _personmanager = personManager;
+
+            /* Add the PersonManager to the service collection in program.cs
+            * AddSingleton is used to register PersonManager, meaning that
+            * a single instance of PersonManager will be used throughout the application.
+            * */
         }
 
         // Property to hold the list of persons

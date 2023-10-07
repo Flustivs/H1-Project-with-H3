@@ -13,10 +13,21 @@ namespace AdminSite.Controller
         private readonly string _connectionString;
         internal List<Person> _allPersons;
 
+        /// <summary>
+        /// In the constructor of PersonManager, the IOptions<ConnectionString> interface is used as a parameter.
+        /// ASP.NET Core's dependency injection system automatically provides an instance of ConnectionString
+        /// to the constructor when creating an instance of PersonManager. 
+        /// This process is known as dependency injection.
+        /// </summary>
+        /// <param name="connectionString"></param>
         public PersonManager(IOptions<ConnectionString> connectionString)
         {
             _connectionString = connectionString.Value.DefaultConnection;
-            //_allPersons =  GetAllPersons();
+            /* connectionString is an instance of IOptions<ConnectionString> injected into the constructor. 
+            *By accessing connectionString.Value.DefaultConnection, the actual connection string value from the configuration file 
+            *(such as appsettings.json in an ASP.NET Core application) is retrieved and stored in the private _connectionString field. 
+            *This connection string can then be used to establish a connection to the database.
+            */
         }
 
 
