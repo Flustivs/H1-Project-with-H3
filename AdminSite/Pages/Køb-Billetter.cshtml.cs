@@ -24,10 +24,15 @@ namespace AdminSite.Pages
             return price;
         }
 
+        [BindProperty(Name = "TicketAmount")]
+        public int TicketAmount { get; set; }
+
         public IActionResult OnPost()
         {
-            Console.WriteLine("Clicked...");
-            return Page();
+            // You can access TicketAmount here and process it as needed
+            // For demonstration, let's just write it to the console
+            System.Console.WriteLine("Ticket Amount: " + TicketAmount);
+            return RedirectToPage();
         }
     }
 }

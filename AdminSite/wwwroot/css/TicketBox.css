@@ -1,6 +1,4 @@
-﻿/* Other CSS styles */
-
-.popup {
+﻿.popup {
     display: none;
     position: fixed;
     top: 50%;
@@ -17,9 +15,7 @@
         display: block;
     }
 
-.popup-content {
-    /* You can remove these styles as they are inherited from .popup */
-}
+
 
 .close {
     color: #aaa;
