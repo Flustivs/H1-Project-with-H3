@@ -8,7 +8,7 @@ namespace AdminSite.Controller
         public string Connect(byte i)
         {
             //string datasource = @"LAPTOP-94N0K9HA\MSSQLSERVER01"; // Test on local pc
-            string connString = @"Data (localdb)\MSSqlLocalDb;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
+            string connString = @"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
             SqlConnection conn = new SqlConnection(connString); // Makes a new connection to Database
 
             try
