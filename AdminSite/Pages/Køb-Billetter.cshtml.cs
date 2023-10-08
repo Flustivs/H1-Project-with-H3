@@ -29,9 +29,7 @@ namespace AdminSite.Pages
 
         public IActionResult OnPost()
         {
-            // You can access TicketAmount here and process it as needed
-            // For demonstration, let's just write it to the console
-            System.Console.WriteLine("Ticket Amount: " + TicketAmount);
+            Console.WriteLine("Ticket Amount: " + TicketAmount);
             return RedirectToPage();
         }
     }
