@@ -45,16 +45,6 @@
                 </form>
             </div>
         </div>
-        
-        <a href="#popuporder" id="open-popup-link">Open Popup Order</a>
-
-        <form id="popuporder">
-            <div class="popup-content">
-                <span class="close"><a href="#">×</a></span>
-                <h2>Popup Order</h2>
-                <p>can i get a hyaaaaa</p>
-            </div>
-        </form>
     </div>
 
     @* News Box in the middle *@
@@ -68,10 +58,26 @@
            * Børn i alderen 0-1 år, kan køre uden et Dag, Måned eller Årpas<br />
            * Et Månedpas varer kun 30 dage
         </p>
-        <a href="#MonthlyPass" class="monthlyPassButton">
+        @*<a href="#MonthlyPass" class="monthlyPassButton">
             <span>Køb nu</span>
-        </a>
-        
+        </a>*@
+        <form method="post">
+            <a href="#MonthlyPass" class="monthlyPassButton">
+                <span>Køb nu</span>
+            </a>
+        </form>
+
+        <div id="MonthlyPass" class="popup">
+            <div class="popup-content">
+                <span class="close"><a href="#">×</a></span>
+                <h2>Billet Køb</h2>
+                <p>Hvor mange billetter vil du købe</p>
+                <form method="post">
+                    <input type="number" id="TicketAmount" name="TicketAmount" />
+                    <button type="submit" id="SubmitButton">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     @* Open or Closed Box in the right side *@
@@ -85,9 +91,26 @@
             * Indeholder altid Månedpas<br />
             * Køb indenfor sæsonen og spar 304 DKK
         </p>
-        <a href="#YearlyPass" class="yearlyPassButton">
+        @*<a href="#YearlyPass" class="yearlyPassButton">
             <span>Køb nu</span>
-        </a>
+        </a>*@
+        <form method="post">
+            <a href="#YearlyPass" class="yearlyPassButton">
+                <span>Køb nu</span>
+            </a>
+        </form>
+
+        <div id="YearlyPass" class="popup">
+            <div class="popup-content">
+                <span class="close"><a href="#">×</a></span>
+                <h2>Billet Køb</h2>
+                <p>Hvor mange billetter vil du købe</p>
+                <form method="post">
+                    <input type="number" id="TicketAmount" name="TicketAmount" />
+                    <button type="submit" id="SubmitButton">Submit</button>
+                </form>
+            </div>
+        </div>
         
     </div>
 </div>

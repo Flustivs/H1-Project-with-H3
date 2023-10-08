@@ -29,7 +29,8 @@ namespace AdminSite.Pages
 
         public IActionResult OnPost()
         {
-            Console.WriteLine("Ticket Amount: " + TicketAmount);
+            OrderManager orderManager = new OrderManager();
+            Console.WriteLine("This many tickets: " +  TicketAmount + "\nThis is your orderID: " + orderManager.OrderConnect());
             return RedirectToPage();
         }
     }
