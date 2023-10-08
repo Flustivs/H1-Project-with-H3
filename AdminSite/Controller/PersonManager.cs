@@ -46,7 +46,7 @@ namespace AdminSite.Controller
                 return null;
             }
         }
-
+        
         public List<Person> GetAllPersons()
         {
             string selectAllRecords = "SELECT * FROM tblPerson";

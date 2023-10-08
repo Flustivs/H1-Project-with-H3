@@ -61,9 +61,10 @@ namespace AdminSite.Controller
                 return "Email does not exist. Please try again.";
         }
 
-        public int GetRole(int personID)
+        public List<int> GetRole(int personID)
         {
-            int roleID = 0;
+            List<int> roleIDs = new List<int>();
+
             string selectRoleViaPersonID = "SELECT r.roleID FROM tblRole r INNER JOIN tblPersonRole pr ON r.roleID = pr.roleID WHERE pr.personID = @PersonID";
             try
             {
@@ -78,23 +79,23 @@ namespace AdminSite.Controller
                         {
                             if (reader.Read())
                             {
-                                roleID = int.Parse(reader["roleID"].ToString());
+                                roleIDs.Add(int.Parse(reader["roleID"].ToString()));
                             }
                         }
                     }
                 }
-                return roleID;
+                return roleIDs;
             }
             catch (SqlException ex)
             {
                 Debug.WriteLine("SQL Error: " + ex.Message);
-                return 0;
+                return null;
             }
 
             catch (Exception ex)
             {
                 Debug.WriteLine("Error: Unable to define a role" + ex.Message);
-                return 0;
+                return null;
             }
         }
     }

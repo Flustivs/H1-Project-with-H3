@@ -1,6 +1,7 @@
 using AdminSite.Controller;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Linq;
 
 namespace AdminSite.Pages
 {
@@ -45,22 +46,25 @@ namespace AdminSite.Pages
 
             if (int.TryParse(personID, out int personIdToRetrieveRoleID))
             {
-                int roleID = _logInManager.GetRole(personIdToRetrieveRoleID);
+                List<int> roleIDs = _logInManager.GetRole(personIdToRetrieveRoleID);
 
-
-                if (roleID == 1)
+                /*Given that a person may have multiple roles, 
+                 * we want to prioritize the admin and staff roles over the customer role, 
+                 * OnPost() method to check for multiple roles and redirect to the appropriate page based on the highest priority role. 
+                 */
+                if (roleIDs.Contains(3))
                 {
-                    return RedirectToPage("/Customer");
+                    return RedirectToPage("/AdminPanel");
                 }
-                else if (roleID == 2)
+                else if (roleIDs.Contains(2))
                 {
                     // Redirect to staff page
                     return RedirectToPage("/StaffPanel");
                 }
-                else if (roleID == 3)
+                else if (roleIDs.Contains(1))
                 {
-                    // Redirect to admin page
-                    return RedirectToPage("/AdminPanel");
+                    // Redirect to Customer page
+                    return RedirectToPage("/Customer");
                 }
                 else
                 {

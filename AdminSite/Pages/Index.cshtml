@@ -10,53 +10,117 @@
     <h1>Super Fun Fun Park</h1>
 </div>
 <hr />
+<head>
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-<div class="mainContainer">
-    @* Maintenance Box in the left side *@
-    <div class="maintenanceBox">
-        <a class="maintenanceBigtext">Næste vedligeholdelse</a>
-        <hr class="maintenanceHR" />
-        <a class="maintenanceDate">3 November 2023</a>
-        <br />
-        <a class="maintenanceClock">Klokken 06:00 - 12:30</a>
-    </div>
+            table td, table th {
+                border: 2px solid #ddd;
+                padding: 8px;
+            }
 
-    @* News Box in the middle *@
-    <div class="newsBox">
-        <a class="newsBigtext">Nyhedsboks</a>
-        <hr class="newsHR" />
-        <a>
-            "SuperFunFunPark: Et Nyt Eventyr Begynder! Oplev Spændingen i Danmarks Nyeste Forlystelsespark"<br />
-            <br />
-            Danmark har netop budt velkommen til sit seneste skattekammer af underholdning og spænding med åbningen af SuperFunFunPark. Dette imponerende forlystelsesmekka lover at tage gæster med på en utrolig rejse gennem fantastiske verdener af sjov og eventyr.<br />
-            <br />
-            Med forlystelser for alle aldre, fra adrenalinsusende rutsjebaner til børnevenlige karuseller, er SuperFunFunPark det perfekte sted for familier, venner og eventyrlystne sjæle. Parken byder også på kulinariske oplevelser fra gourmetmadboder til lækre snacks.<br />
-            <br />
-            Så pak din eventyrlyst og smilene ind, og sæt kursen mod SuperFunFunPark, hvor eventyret aldrig stopper, og magien venter rundt om hvert hjørne. Velkommen til et nyt kapitel i forlystelsesverdenen!
-        </a>
-    </div>
+            table tr:nth-child(even) {
+                background-color: #d9e6cf;
+            }
 
-    @* Open or Closed Box in the right side *@
-    <div class="openTime">
-        <a class="openBigtext">Åbningstider</a>
-        <div id="curr_date">
-            <script>
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                const formattedDate = new Date().toLocaleDateString('da-DK', options);
-                const correctedDate = formattedDate.replace(/\b\w/g, (c) => c.toUpperCase());
-                document.getElementById("curr_date").innerHTML = correctedDate;
-            </script>
+            table tr:hover {
+                background-color: #b5cca3;
+            }
+
+            table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: #9EB384;
+                color: white;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="mainContainer">
+        @* Maintenance Box in the left side *@
+        <div class="maintenanceBox">
+            <a class="maintenanceBigtext">Maintenance within next 14 days:</a>
+            @* <hr class="maintenanceHR" />
+            <a class="maintenanceDate">3 November 2023</a>
+            <br />
+            <a class="maintenanceClock">Klokken 06:00 - 12:30</a> *@
+            <br>
+            <table>
+                <tr>
+                    <th>Facility Name</th>
+                    <th>Date</th>
+
+                </tr>
+
+                @if (Model.AllFacilities != null)
+                {
+
+                    foreach (var facility in Model.AllFacilities)
+                    {
+                        if (facility.NextMaintenanceDate <= DateTime.Now.AddDays(14))
+                        {
+                        <tr>
+                            <td>@facility.FacilityName</td>
+                            <td>@facility.NextMaintenanceDate.ToShortDateString()</td>
+                        </tr>
+                            
+                        }
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4">No facility found.</td>
+                    </tr>
+                }
+            </table>
+
+
         </div>
-        <hr class="openHR" />
-        <p class="openingTime">
-            Mandag     09:00 - 21:00<br />
-            Tirsdag     09:00 - 21:00<br />
-            Onsdag      09:00 - 21:00<br />
-            Torsdag     09:00 - 21:00<br />
-            Fredag      09:00 - 22:00<br />
-            Lørdag      08:00 - 23:00<br />
-            Søndag      10:30 - 20:00
-        </p>
-    </div>
-</div>
 
+        @* News Box in the middle *@
+        <div class="newsBox">
+            <a class="newsBigtext">Nyhedsboks</a>
+            <hr class="newsHR" />
+            <a>
+                "SuperFunFunPark: Et Nyt Eventyr Begynder! Oplev Spændingen i Danmarks Nyeste Forlystelsespark"<br />
+                <br />
+                Danmark har netop budt velkommen til sit seneste skattekammer af underholdning og spænding med åbningen af SuperFunFunPark. Dette imponerende forlystelsesmekka lover at tage gæster med på en utrolig rejse gennem fantastiske verdener af sjov og eventyr.<br />
+                <br />
+                Med forlystelser for alle aldre, fra adrenalinsusende rutsjebaner til børnevenlige karuseller, er SuperFunFunPark det perfekte sted for familier, venner og eventyrlystne sjæle. Parken byder også på kulinariske oplevelser fra gourmetmadboder til lækre snacks.<br />
+                <br />
+                Så pak din eventyrlyst og smilene ind, og sæt kursen mod SuperFunFunPark, hvor eventyret aldrig stopper, og magien venter rundt om hvert hjørne. Velkommen til et nyt kapitel i forlystelsesverdenen!
+            </a>
+        </div>
+
+        @* Open or Closed Box in the right side *@
+        <div class="openTime">
+            <a class="openBigtext">Åbningstider</a>
+            <div id="curr_date">
+                <script>
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    const formattedDate = new Date().toLocaleDateString('da-DK', options);
+                    const correctedDate = formattedDate.replace(/\b\w/g, (c) => c.toUpperCase());
+                    document.getElementById("curr_date").innerHTML = correctedDate;
+                </script>
+            </div>
+            <hr class="openHR" />
+            <p class="openingTime">
+                Mandag     09:00 - 21:00<br />
+                Tirsdag     09:00 - 21:00<br />
+                Onsdag      09:00 - 21:00<br />
+                Torsdag     09:00 - 21:00<br />
+                Fredag      09:00 - 22:00<br />
+                Lørdag      08:00 - 23:00<br />
+                Søndag      10:30 - 20:00
+            </p>
+        </div>
+    </div>
+
+</body>

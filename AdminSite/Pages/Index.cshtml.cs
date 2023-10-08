@@ -11,6 +11,8 @@ namespace AdminSite.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly PersonManager _personmanager;
+        private readonly FacilityManager _facilitymanager;
+
 
         /// <summary>
         /// PersonManager class instance is injected into the IndexModel class using ASP.NET Core's dependency injection system.
@@ -21,7 +23,7 @@ namespace AdminSite.Pages
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="personManager"></param>
-        public IndexModel(ILogger<IndexModel> logger, PersonManager personManager)
+        public IndexModel(ILogger<IndexModel> logger, PersonManager personManager, FacilityManager facilitymanager)
         {
             /* ILogger<IndexModel>:
              * ILogger<T> is a built-in logging interface provided by ASP.NET Core. 
@@ -35,15 +37,19 @@ namespace AdminSite.Pages
              *  By injecting an instance of PersonManager, the IndexModel class can interact with the user data through the methods provided by PersonManager.
             */
             _personmanager = personManager;
+            _facilitymanager = facilitymanager;
 
             /* Add the PersonManager to the service collection in program.cs
             * AddSingleton is used to register PersonManager, meaning that
             * a single instance of PersonManager will be used throughout the application.
             * */
+
+
         }
 
         // Property to hold the list of persons
         public List<Person> AllPersons { get; set; }
+        public List<Facility> AllFacilities { get; set; } = new List<Facility>();
         public void OnGet()
         {
             ////add all persons, only once
@@ -103,6 +109,9 @@ namespace AdminSite.Pages
 
             //Show table of all persons
             //AllPersons = _personmanager.GetAllPersons();
+
+            AllFacilities = _facilitymanager.GetAllFacilities();
+
         }
     }
 }
