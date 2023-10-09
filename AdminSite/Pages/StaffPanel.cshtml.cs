@@ -6,7 +6,11 @@ namespace AdminSite.Pages
 {
     public class StaffPanelModel : PageModel
     {
-        PriceManager ticketPrice { get; set; }
+        private readonly PriceManager ticketPrice;
+        public StaffPanelModel(PriceManager price)
+        {
+            this.ticketPrice = price;
+        }
         public string Price1()
         {
             string price = ticketPrice.TicketsConnect(1);

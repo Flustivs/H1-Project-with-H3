@@ -80,21 +80,21 @@ namespace AdminSite.Pages
             // Get AllFacilities
             AllFacilities = _facilityManager.GetAllFacilities();
         }
-        /*
-        public IActionResult OnPostEdit()
-        {
-            // Use _personmanager to retrieve the details of the selected staff member
-            // And render an edit form
-        }
-        public IActionResult OnPostDelete()
-        {
-            // Use _personmanager to delete the selected staff member
-            _personmanager.DeletePerson(SelectedStaffEmail);
-        }
-        public IActionResult OnPostAddNew()
-        {
-            // Render a form to add a new staff member
-        }
-        */
+
+        //public IActionResult OnPostEdit()
+        //{
+        //    // Use _personmanager to retrieve the details of the selected staff member
+        //    // And render an edit form
+        //}
+        //public IActionResult OnPostDelete()
+        //{
+        //    // Use _personmanager to delete the selected staff member
+        //    _personmanager.DeletePerson(SelectedStaffEmail);
+        //}
+        //public IActionResult OnPostAddNew()
+        //{
+        //    // Render a form to add a new staff member
+        //}
+
     }
 }
