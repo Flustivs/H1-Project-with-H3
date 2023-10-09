@@ -16,6 +16,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton<PersonManager>();
 builder.Services.AddSingleton<LogInManager>();
 builder.Services.AddSingleton<FacilityManager>();
+builder.Services.AddSingleton<PriceManager>();
+builder.Services.AddSingleton<OrderManager>();
+builder.Services.AddSingleton<AboutController>();
 
 // ConnectionString registered in the ConfigureServices:
 builder.Services.Configure<ConnectionString>(builder.Configuration.GetSection("ConnectionStrings"));

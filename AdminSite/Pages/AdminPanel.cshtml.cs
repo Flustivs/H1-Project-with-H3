@@ -20,6 +20,7 @@ namespace AdminSite.Pages
         public List<Person> Staff { get; set; }
         public List<Person> Customers { get; set; }
         public List<Facility> AllFacilities { get; set; }
+
         private PriceManager ticketManager { get; set; }
         public string Price1()
         {
@@ -38,13 +39,13 @@ namespace AdminSite.Pages
 
         }
 
-        public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager)
+        public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager, PriceManager priceManager)
         {
             _logger = logger;
             _personmanager = personManager;
             _logInManager = logInManager;
             _facilityManager = facilityManager;
-            ticketManager = new PriceManager();
+            _priceManager = priceManager;
         }
 
         // define a property SelectedStaffId to hold the selected staff member's email:
@@ -78,6 +79,23 @@ namespace AdminSite.Pages
             // Get AllFacilities
             AllFacilities = _facilityManager.GetAllFacilities();
         }
+
+            public string Price1()
+            {
+                string price = _priceManager.TicketsConnect(1);
+                return price;
+            }
+            public string Price2()
+            {
+                string price = _priceManager.TicketsConnect(2);
+                return price;
+            }
+            public string Price3()
+            {
+                string price = _priceManager.TicketsConnect(3);
+                return price;
+
+            }
 
         public IActionResult OnPostEdit()
         {

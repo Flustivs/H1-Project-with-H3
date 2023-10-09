@@ -1,15 +1,21 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using AdminSite.DAL;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Options;
 
 namespace AdminSite.Controller
 {
     public class OrderManager
     {
         private string _columnValue;
+        private readonly string _connectionString;
+
+        public OrderManager(IOptions<ConnectionString> connectionString)
+        {
+            _connectionString = connectionString.Value.DefaultConnection;
+        }
         public string OrderConnect()
         {
-            //string datasource = @"LAPTOP-94N0K9HA\MSSQLSERVER01"; // Test on local pc
-            string connString = @"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
-            SqlConnection conn = new SqlConnection(connString); // Makes a new connection to Database
+            SqlConnection conn = new SqlConnection(_connectionString); // Makes a new connection to Database
             string orderID = "SELECT orderID FROM tblOrder";
 
             try

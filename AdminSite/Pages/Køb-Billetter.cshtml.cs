@@ -5,23 +5,35 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminSite.Pages
 {
+    /// <summary>
+    /// In this class we get the price of the different types 
+    /// </summary>
     public class Køb_BilletterModel : PageModel
     {
-        PriceManager ticket = new PriceManager();
+
+        private readonly PriceManager price;
+        private readonly OrderManager order;
+
+        public Køb_BilletterModel(PriceManager price, OrderManager order)
+        {
+            this.price = price;
+            this.order = order;
+        }
+
         public string Price1()
         {
-            string price = ticket.TicketsConnect(1);
-            return price;
+            string ticketPrice = price.TicketsConnect(1);
+            return ticketPrice;
         }
         public string Price2()
         {
-            string price = ticket.TicketsConnect(2);
-            return price;
+            string ticketPrice = price.TicketsConnect(2);
+            return ticketPrice;
         }
         public string Price3()
         {
-            string price = ticket.TicketsConnect(3);
-            return price;
+            string ticketPrice = price.TicketsConnect(3);
+            return ticketPrice;
         }
 
         [BindProperty(Name = "TicketAmount")]
@@ -29,8 +41,7 @@ namespace AdminSite.Pages
 
         public IActionResult OnPost()
         {
-            OrderManager orderManager = new OrderManager();
-            Console.WriteLine("This many tickets: " +  TicketAmount + "\nThis is your orderID: " + orderManager.OrderConnect());
+            Console.WriteLine("This many tickets: " +  TicketAmount + "\nThis is your orderID: " + order.OrderConnect());
             return RedirectToPage();
         }
     }
