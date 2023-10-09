@@ -11,20 +11,20 @@ hr {
     margin-bottom: 50px;
 }
 
-.forlystelsesHR {
+.attractionHR {
     width: 940px;
     margin: 30px;
 }
 
 /* Main Container */
-.mainContainerForlystelser {
+.mainContainerAttraction {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* Forlystelser */
+/* Attraction */
 .goGoRollercoaster,
 .deepDeepFallDropTower,
 .superSwimmingPool,

@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminSite.Pages
 {
-    public class Køb_BilletterModel : PageModel
+    public class BuyTicketModel : PageModel
     {
-        PriceManager ticket = new PriceManager();
+        PriceManager ticket {  get; set; }
         public string Price1()
         {
             string price = ticket.TicketsConnect(1);

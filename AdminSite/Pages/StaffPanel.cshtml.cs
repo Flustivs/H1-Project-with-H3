@@ -6,7 +6,7 @@ namespace AdminSite.Pages
 {
     public class StaffPanelModel : PageModel
     {
-        PriceManager ticket = new PriceManager();
+        PriceManager ticket {  get; set; }
         public string Price1()
         {
 

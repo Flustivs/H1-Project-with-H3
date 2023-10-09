@@ -1,16 +1,22 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using AdminSite.DAL;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace AdminSite.Controller
 {
     public class PriceManager
     {
         private string _ticketvalue;
+        private readonly string _connectionString;
+        
+        public PriceManager(IOptions<ConnectionString> connectionString)
+        {
+            _connectionString = connectionString.Value.DefaultConnection;
+        }
         public string TicketsConnect(byte i)
         {
-            //string datasource = @"LAPTOP-94N0K9HA\MSSQLSERVER01"; // Test on local pc
-            string connString = @"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
-            SqlConnection conn = new SqlConnection(connString); // Makes a new connection to Database
+            SqlConnection conn = new SqlConnection(_connectionString); // Makes a new connection to Database
 
             try
             {
