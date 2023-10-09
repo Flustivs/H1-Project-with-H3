@@ -22,6 +22,7 @@ namespace AdminSite.Pages
         public List<Facility> AllFacilities { get; set; }
 
         private PriceManager ticketManager { get; set; }
+        // Gets the data from each row of the database.
         public string Price1()
         {
             string price = ticketManager.TicketsConnect(1);
