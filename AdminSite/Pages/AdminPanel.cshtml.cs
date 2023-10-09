@@ -80,36 +80,19 @@ namespace AdminSite.Pages
             AllFacilities = _facilityManager.GetAllFacilities();
         }
 
-            public string Price1()
-            {
-                string price = _priceManager.TicketsConnect(1);
-                return price;
-            }
-            public string Price2()
-            {
-                string price = _priceManager.TicketsConnect(2);
-                return price;
-            }
-            public string Price3()
-            {
-                string price = _priceManager.TicketsConnect(3);
-                return price;
-
-            }
-
-        public IActionResult OnPostEdit()
-        {
-            // Use _personmanager to retrieve the details of the selected staff member
-            // And render an edit form
-        }
-        public IActionResult OnPostDelete()
-        {
-            // Use _personmanager to delete the selected staff member
-            _personmanager.DeletePerson(SelectedStaffEmail);
-        }
-        public IActionResult OnPostAddNew()
-        {
-            // Render a form to add a new staff member
-        }
+        //public IActionResult OnPostEdit()
+        //{
+        //    // Use _personmanager to retrieve the details of the selected staff member
+        //    // And render an edit form
+        //}
+        //public IActionResult OnPostDelete()
+        //{
+        //    // Use _personmanager to delete the selected staff member
+        //    _personmanager.DeletePerson(SelectedStaffEmail);
+        //}
+        //public IActionResult OnPostAddNew()
+        //{
+        //    // Render a form to add a new staff member
+        //}
     }
 }
