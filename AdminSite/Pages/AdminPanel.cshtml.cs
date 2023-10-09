@@ -1,9 +1,12 @@
 using AdminSite.Controller;
-
 using AdminSite.DAL;
-
+using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.VisualBasic;
+using static System.Net.WebRequestMethods;
+using System.Diagnostics.Metrics;
+using System;
 
 namespace AdminSite.Pages
 {
@@ -51,6 +54,10 @@ namespace AdminSite.Pages
         [BindProperty]
         public string SelectedStaffEmail { get; set; }
 
+        [BindProperty(Name = "TicketAmount")]
+        public int TicketAmount { get; set; }
+
+
         public void OnGet()
         {
             // Get staff and customer lists
@@ -83,15 +90,43 @@ namespace AdminSite.Pages
         {
             // Use _personmanager to retrieve the details of the selected staff member
             // And render an edit form
+
+
+
+
+            // Redirect to a specific page after deletion (for example, back to the same page)
+            return RedirectToPage("/AdminPanel");
         }
+        /// <summary>
+        /// In C#, methods with a return type, such as IActionResult, 
+        /// are expected to return a value of that type after their execution. 
+        /// This is essential for the flow of your application, especially in web applications built with ASP.NET Core.
+        /// 
+        /// In your case, the OnPostDelete method is defined with a return type of IActionResult.
+        /// In ASP.NET Core Razor Pages, the methods like OnPostDelete are used 
+        /// to handle HTTP POST requests initiated by user interactions (e.g., clicking a button). 
+        /// 
+        /// After processing the request(in this case, deleting a person), 
+        /// you typically want to redirect the user to another page  
+        /// or provide some response to indicate the success or failure of the operation.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult OnPostDelete()
         {
             // Use _personmanager to delete the selected staff member
             _personmanager.DeletePerson(SelectedStaffEmail);
+
+            // Redirect to a specific page after deletion (for example, back to the same page)
+            return RedirectToPage("/AdminPanel");
         }
         public IActionResult OnPostAddNew()
         {
             // Render a form to add a new staff member
+
+
+
+            // Redirect to a specific page after deletion (for example, back to the same page)
+            return RedirectToPage("/AdminPanel");
         }
     }
 }
