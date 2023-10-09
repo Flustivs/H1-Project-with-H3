@@ -43,10 +43,10 @@ namespace AdminSite.Controller
             catch (Exception ex)
             {
                 Debug.WriteLine("Error: email no found" + ex.Message);
-                return null;
+                return new Person();
             }
         }
-        
+
         public List<Person> GetAllPersons()
         {
             string selectAllRecords = "SELECT * FROM tblPerson";
@@ -91,17 +91,32 @@ namespace AdminSite.Controller
             catch (SqlException ex)
             {
                 Console.WriteLine("SQL Error: " + ex.Message);
-                return null;
+                return new List<Person>();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Error: " + ex.Message);
-                return null;
+                return new List<Person>();
             }
         }
 
-        public void AddPerson(string email, string personName, string password)
+        /// <summary>
+        /// Insert a new person into DB after generate Salt, hashing salt + password
+        /// Check first email is a new one.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="personName"></param>
+        /// <param name="password"></param>
+        public string AddPerson(string email, string personName, string password)
         {
+            // First check if email is existed in db
+            List<Person> persons = GetAllPersons();
+
+            if (persons.FirstOrDefault(p => p.Email == email) != null)
+            {
+                return "email already exists in databese.";
+            }
+
             byte[] saltBytes = GenerateSalt();
             byte[] hashedPasswordBytes = HashPassword(Encoding.UTF8.GetBytes(password), saltBytes);
 
@@ -124,16 +139,115 @@ namespace AdminSite.Controller
                     {
                         conn.Open();
                         cmd.ExecuteNonQuery();
+                        return $"{personName} added to database successfully!";
                     }
                     catch (SqlException ex)
                     {
-                        Console.WriteLine("SQL Error: " + ex.Message);
+                        return "SQL Error: " + ex.Message;
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine("Error: " + ex.Message);
+                        return "Error: " + ex.Message;
                     }
                 }
+            }
+        }
+
+        public void EditPerson(string inputEmail, string name, string password)
+        {
+            List<Person> persons = GetAllPersons();
+
+            if (persons.FirstOrDefault(p => p.Email == inputEmail) != null)
+            {
+                Person personToEdit = RetrievePerson(inputEmail);
+
+            }
+            else
+            {
+                Debug.WriteLine("Email does not exist in databese.");
+            }
+        }
+
+        /// <summary>
+        /// To delete rows from multiple tables in a database transaction, use a transaction in SQL Server.
+        /// A transaction ensures that a series of SQL operations are treated as a single unit of work. 
+        /// If any operation within the transaction fails, 
+        /// the entire transaction can be rolled back, ensuring data consistency.
+        /// </summary>
+        /// <param name="inputEmail"></param>
+        public void DeletePerson(string inputEmail)
+        {
+            List<Person> persons = GetAllPersons();
+
+            if (persons.FirstOrDefault(p => p.Email == inputEmail) != null)
+            {
+                // Find the person to delete
+                Person personToDelete = RetrievePerson(inputEmail);
+
+                string deletePersonRoleCommand = "DELETE FROM tblPersonRole WHERE personID = @PersonID";
+                string deletePersonFacilityCommand = "DELETE FROM tblPersonRole WHERE personID = @PersonID";
+                string deletePersonCommand = "DELETE FROM tblPerson WHERE personID = @PersonID";
+
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+
+                    using (SqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        // Delete PersonRole associated with the PersonID to be deleted
+                        using (SqlCommand cmd = new SqlCommand(deletePersonRoleCommand, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@PersonID", personToDelete.PersonID);
+                            try
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                            catch (SqlException ex)
+                            {
+                                Debug.WriteLine("SQL Error: " + ex.Message);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine("Error: " + ex.Message);
+                            }
+                        }
+
+
+                        // also delete orders associated to the person to be deleted?
+                        // Delete Person 
+                        using (SqlCommand cmd = new SqlCommand(deletePersonCommand, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@PersonID", personToDelete.PersonID);
+                            try
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                            catch (SqlException ex)
+                            {
+                                Debug.WriteLine("SQL Error: " + ex.Message);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine("Error: " + ex.Message);
+                            }
+                        }
+
+
+
+
+
+
+
+                    }
+
+
+
+
+                }
+            }
+            else
+            {
+                Debug.WriteLine("Email does not exist in databese.");
             }
         }
 
@@ -144,8 +258,6 @@ namespace AdminSite.Controller
                 return rfc2898.GetBytes(32);
             };
         }
-
-
 
         public byte[] GenerateSalt()
         {

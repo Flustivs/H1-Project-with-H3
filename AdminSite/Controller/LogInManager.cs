@@ -89,13 +89,13 @@ namespace AdminSite.Controller
             catch (SqlException ex)
             {
                 Debug.WriteLine("SQL Error: " + ex.Message);
-                return null;
+                return new List<int>();
             }
 
             catch (Exception ex)
             {
                 Debug.WriteLine("Error: Unable to define a role" + ex.Message);
-                return null;
+                return new List<int>();
             }
         }
     }
