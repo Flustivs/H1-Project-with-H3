@@ -45,7 +45,7 @@ namespace AdminSite.Pages
             _personmanager = personManager;
             _logInManager = logInManager;
             _facilityManager = facilityManager;
-            _priceManager = priceManager;
+            ticketManager = priceManager;
         }
 
         // define a property SelectedStaffId to hold the selected staff member's email:
@@ -79,23 +79,6 @@ namespace AdminSite.Pages
             // Get AllFacilities
             AllFacilities = _facilityManager.GetAllFacilities();
         }
-
-            public string Price1()
-            {
-                string price = _priceManager.TicketsConnect(1);
-                return price;
-            }
-            public string Price2()
-            {
-                string price = _priceManager.TicketsConnect(2);
-                return price;
-            }
-            public string Price3()
-            {
-                string price = _priceManager.TicketsConnect(3);
-                return price;
-
-            }
 
         public IActionResult OnPostEdit()
         {
