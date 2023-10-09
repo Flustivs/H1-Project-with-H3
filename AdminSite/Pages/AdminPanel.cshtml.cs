@@ -79,7 +79,7 @@ namespace AdminSite.Pages
             // Get AllFacilities
             AllFacilities = _facilityManager.GetAllFacilities();
         }
-
+        /*
         public IActionResult OnPostEdit()
         {
             // Use _personmanager to retrieve the details of the selected staff member
@@ -94,5 +94,6 @@ namespace AdminSite.Pages
         {
             // Render a form to add a new staff member
         }
+        */
     }
 }
