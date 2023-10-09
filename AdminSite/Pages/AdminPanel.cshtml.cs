@@ -9,7 +9,7 @@ namespace AdminSite.Pages
 {
     public class AdminPanelModel : PageModel
     {
- 
+
         private readonly ILogger<IndexModel> _logger;
         private readonly PersonManager _personmanager;
         private readonly LogInManager _logInManager;
@@ -18,10 +18,12 @@ namespace AdminSite.Pages
 
         // Property to hold the list of persons
         public List<Person> AllPersons { get; set; }
-        public List<Person> Admins { get; set; } 
+        public List<Person> Admins { get; set; }
         public List<Person> Staff { get; set; }
         public List<Person> Customers { get; set; }
         public List<Facility> AllFacilities { get; set; }
+        private PriceManager ticketManager { get; set; }
+
 
         public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager)
         {
@@ -29,6 +31,7 @@ namespace AdminSite.Pages
             _personmanager = personManager;
             _logInManager = logInManager;
             _facilityManager = facilityManager;
+            ticketManager = new PriceManager();
         }
 
         public void OnGet()
@@ -37,7 +40,7 @@ namespace AdminSite.Pages
             AllPersons = _personmanager.GetAllPersons();
             Admins = new List<Person>();
             Staff = new List<Person>();
-            Customers= new List<Person>();
+            Customers = new List<Person>();
             foreach (Person person in AllPersons)
             {
                 List<int> roleIDs = _logInManager.GetRole(person.PersonID);
@@ -57,23 +60,23 @@ namespace AdminSite.Pages
 
             // Get AllFacilities
             AllFacilities = _facilityManager.GetAllFacilities();
-
-        PriceManager ticket = new PriceManager();
-        public string Price1()
-        {
-            string price = ticket.TicketsConnect(1);
-            return price;
         }
-        public string Price2()
-        {
-            string price = ticket.TicketsConnect(2);
-            return price;
-        }
-        public string Price3()
-        {
-            string price = ticket.TicketsConnect(3);
-            return price;
 
+            public string Price1()
+            {
+                string price = ticketManager.TicketsConnect(1);
+                return price;
+            }
+            public string Price2()
+            {
+                string price = ticketManager.TicketsConnect(2);
+                return price;
+            }
+            public string Price3()
+            {
+                string price = ticketManager.TicketsConnect(3);
+                return price;
+
+            }
         }
     }
-}
