@@ -7,7 +7,7 @@ namespace AdminSite.Pages
 {
     public class BuyTicketModel : PageModel
     {
-        PriceManager ticket {  get; set; }
+        PriceManager ticket = new PriceManager();
         public string Price1()
         {
             string price = ticket.TicketsConnect(1);

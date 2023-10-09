@@ -10,6 +10,11 @@ namespace AdminSite.Controller
         private string _ticketvalue;
         private readonly string _connectionString;
         
+        public PriceManager()
+        {
+
+        }
+
         public PriceManager(IOptions<ConnectionString> connectionString)
         {
             _connectionString = connectionString.Value.DefaultConnection;
