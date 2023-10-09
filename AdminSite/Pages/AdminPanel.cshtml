@@ -133,14 +133,16 @@
                 </table>
 
             </p>
-            <a href="#" class="deleteButton">
-                <span>Slet</span>
-            </a>
-            <a href="#" class="editButton">
-                <span>Rediger</span>
-            </a>
-            <a href="#" class="saveButton">
-                <span>Gem</span>
+            <form method="post">
+                <select asp-for="SelectedStaffEmail" asp-items="@(new SelectList(Model.Staff, "PersonID", "PersonName"))">
+                    <option value="">-- Select Staff --</option>
+                </select>
+                <button type="submit" asp-page-handler="Edit">Edit</button>
+                <button type="submit" asp-page-handler="Delete">Delete</button>
+                @* <button type="submit" asp-page-handler="Save">Save</button> *@
+                <button type="submit" asp-page-handler="AddNew">Add New Staff</button>
+            </form>
+
             </a>
             <br />
             <br />
@@ -265,12 +267,6 @@
                 
             </p>
         </div>
-
-
     </div>
-
-    
-   
-
 </body>
 
