@@ -1,19 +1,25 @@
 ﻿@page
 @model AdminSite.Pages.LoginModel
 @{
-	ViewData["Title"] = "Login - SFFP";
+    ViewData["Title"] = "Login - SFFP";
 }
 
 <div class="mainContainer">
-	<h1></h1>
+    <h1></h1>
 </div>
 <hr />
 
 <div class="login-container">
     <div class="login-form">
         <div class="login-title">Login</div>
-        <input class="login-input" type="text" placeholder="Email">
-        <input class="login-input" type="password" placeholder="Password">
-        <button class="login-button">Login</button>
+        <form method="post">
+            <input type="email" id="email" placeholder="Email" asp-for="InputEmail" required />
+            <br />
+
+            <input type="password" id="password" placeholder="Password" asp-for="InputPassword" required />
+            <br />
+            <button type="submit">Login</button>
+            
+        </form>
     </div>
 </div>

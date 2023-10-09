@@ -9,6 +9,10 @@ namespace AdminSite.Pages
         PriceManager ticket = new PriceManager();
         public string Price1()
         {
+
+
+
+
             string price = ticket.TicketsConnect(1);
             return price;
         }
@@ -21,6 +25,7 @@ namespace AdminSite.Pages
         {
             string price = ticket.TicketsConnect(3);
             return price;
+
         }
     }
 }

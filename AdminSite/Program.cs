@@ -1,7 +1,24 @@
+using AdminSite.Controller;
+using AdminSite.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+/* The dependency injection container needs to resolve the PersonManager type.
+ * Add the PersonManager and LogInManager to the service collection
+ * AddSingleton is used to register PersonManager, meaning that 
+ * a single instance of PersonManager will be used throughout the application.
+ * (AddTransient: a new instance is created every time it is requested) 
+ * (AddScoped: a new instance is created once per request)
+ */
+builder.Services.AddSingleton<PersonManager>();
+builder.Services.AddSingleton<LogInManager>();
+builder.Services.AddSingleton<FacilityManager>();
+
+// ConnectionString registered in the ConfigureServices:
+builder.Services.Configure<ConnectionString>(builder.Configuration.GetSection("ConnectionStrings"));
 
 var app = builder.Build();
 
