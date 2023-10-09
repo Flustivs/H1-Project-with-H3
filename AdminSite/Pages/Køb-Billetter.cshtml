@@ -6,6 +6,7 @@
 
 <div class="header">
     <h1>Køb Billetter</h1>
+    <link rel="stylesheet" href="~/css/TicketBox.css" />
 </div>
 <hr />
 
@@ -14,48 +15,103 @@
     <div class="dailyPass">
         <a class="dailyPassBigtext">Dagpas</a>
         <p>Fra<br />
-            175 DKK
+            @Model.Price1()
         </p>
         <hr class="dailyPassHR" />
         <p class="dailyPassText">
             * Børn 3 - 7 år, fra 70 DKK<br />
             * Børn under 3 år, har gratis Entré
         </p>
-        <a href="#DailyPass" class="dailyPassButton">
-            <span>Køb nu</span>
-        </a>
+        @*<form method="post">
+            <a href="#DailyPass" class="dailyPassButton">
+                <span>Køb nu</span>
+            </a>
+        </form>*@
+        
+        <form method="post">
+            <a href="#DailyPassPopup" class="dailyPassButton">
+                <span>Køb nu</span>
+            </a>
+        </form>
+
+        <div id="DailyPassPopup" class="popup">
+            <div class="popup-content">
+                <span class="close"><a href="#">×</a></span>
+                <h2>Billet Køb</h2>
+                <p>Hvor mange billetter vil du købe</p>
+                <form method="post">
+                    <input type="number" id="TicketAmount" name="TicketAmount" />
+                    <button type="submit" id="SubmitButton">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     @* News Box in the middle *@
     <div class="monthlyPass">
         <a class="monthlyPassBigtext">Månedpas</a>
         <p>Fra<br />
-            350 DKK
+            @Model.Price2()
         </p>
         <hr class="monthlyPassHR" />
         <p class="monthlyPassText">
            * Børn i alderen 0-1 år, kan køre uden et Dag, Måned eller Årpas<br />
            * Et Månedpas varer kun 30 dage
         </p>
-        <a href="#MonthlyPass" class="monthlyPassButton">
+        @*<a href="#MonthlyPass" class="monthlyPassButton">
             <span>Køb nu</span>
-        </a>
+        </a>*@
+        <form method="post">
+            <a href="#MonthlyPass" class="monthlyPassButton">
+                <span>Køb nu</span>
+            </a>
+        </form>
+
+        <div id="MonthlyPass" class="popup">
+            <div class="popup-content">
+                <span class="close"><a href="#">×</a></span>
+                <h2>Billet Køb</h2>
+                <p>Hvor mange billetter vil du købe</p>
+                <form method="post">
+                    <input type="number" id="TicketAmount" name="TicketAmount" />
+                    <button type="submit" id="SubmitButton">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     @* Open or Closed Box in the right side *@
     <div class="yearlyPass">
         <a class="yearlyPassBigtext">Årpas</a>
         <p>Fra<br />
-            1570 DKK
+            @Model.Price3()
         </p>
         <hr class="yearlyPassHR" />
         <p class="yearlyPassText">
             * Indeholder altid Månedpas<br />
             * Køb indenfor sæsonen og spar 304 DKK
         </p>
-        <a href="#YearlyPass" class="yearlyPassButton">
+        @*<a href="#YearlyPass" class="yearlyPassButton">
             <span>Køb nu</span>
-        </a>
+        </a>*@
+        <form method="post">
+            <a href="#YearlyPass" class="yearlyPassButton">
+                <span>Køb nu</span>
+            </a>
+        </form>
+
+        <div id="YearlyPass" class="popup">
+            <div class="popup-content">
+                <span class="close"><a href="#">×</a></span>
+                <h2>Billet Køb</h2>
+                <p>Hvor mange billetter vil du købe</p>
+                <form method="post">
+                    <input type="number" id="TicketAmount" name="TicketAmount" />
+                    <button type="submit" id="SubmitButton">Submit</button>
+                </form>
+            </div>
+        </div>
+        
     </div>
 </div>
 

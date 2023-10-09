@@ -1,5 +1,7 @@
 using AdminSite.Controller;
+
 using AdminSite.DAL;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -7,6 +9,7 @@ namespace AdminSite.Pages
 {
     public class AdminPanelModel : PageModel
     {
+ 
         private readonly ILogger<IndexModel> _logger;
         private readonly PersonManager _personmanager;
         private readonly LogInManager _logInManager;
@@ -54,6 +57,23 @@ namespace AdminSite.Pages
 
             // Get AllFacilities
             AllFacilities = _facilityManager.GetAllFacilities();
+
+        PriceManager ticket = new PriceManager();
+        public string Price1()
+        {
+            string price = ticket.TicketsConnect(1);
+            return price;
+        }
+        public string Price2()
+        {
+            string price = ticket.TicketsConnect(2);
+            return price;
+        }
+        public string Price3()
+        {
+            string price = ticket.TicketsConnect(3);
+            return price;
+
         }
     }
 }
