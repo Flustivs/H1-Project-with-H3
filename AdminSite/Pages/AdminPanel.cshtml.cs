@@ -22,16 +22,16 @@ namespace AdminSite.Pages
         public List<Person> Staff { get; set; }
         public List<Person> Customers { get; set; }
         public List<Facility> AllFacilities { get; set; }
-        private PriceManager ticketManager { get; set; }
+        private PriceManager _priceManager { get; set; }
 
 
-        public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager)
+        public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager, PriceManager priceManager)
         {
             _logger = logger;
             _personmanager = personManager;
             _logInManager = logInManager;
             _facilityManager = facilityManager;
-            ticketManager = new PriceManager();
+            _priceManager = priceManager;
         }
 
         public void OnGet()
@@ -64,17 +64,17 @@ namespace AdminSite.Pages
 
             public string Price1()
             {
-                string price = ticketManager.TicketsConnect(1);
+                string price = _priceManager.TicketsConnect(1);
                 return price;
             }
             public string Price2()
             {
-                string price = ticketManager.TicketsConnect(2);
+                string price = _priceManager.TicketsConnect(2);
                 return price;
             }
             public string Price3()
             {
-                string price = ticketManager.TicketsConnect(3);
+                string price = _priceManager.TicketsConnect(3);
                 return price;
 
             }
