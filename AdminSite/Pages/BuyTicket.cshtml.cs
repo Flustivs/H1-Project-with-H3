@@ -8,13 +8,13 @@ namespace AdminSite.Pages
     /// <summary>
     /// In this class we get the price of the different types 
     /// </summary>
-    public class Køb_BilletterModel : PageModel
+    public class BuyTicketModel : PageModel
     {
 
         private readonly PriceManager price;
         private readonly OrderManager order;
 
-        public Køb_BilletterModel(PriceManager price, OrderManager order)
+        public BuyTicketModel(PriceManager price, OrderManager order)
         {
             this.price = price;
             this.order = order;
