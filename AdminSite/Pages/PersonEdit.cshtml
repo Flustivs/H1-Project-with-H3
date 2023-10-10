@@ -10,6 +10,7 @@
 
 <form method="post">
     <input type="hidden" asp-for="PersonToEdit.PersonID" />
+    <input type="hidden" asp-for="SelectedEmail" />
     <div class="form-group">
         <label for="PersonName">New Name</label>
         <input type="text" class="form-control" placeholder="@Model.PersonToEdit.PersonName" asp-for="NewName" />

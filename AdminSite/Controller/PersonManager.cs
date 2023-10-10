@@ -172,12 +172,12 @@ namespace AdminSite.Controller
                 Person personToEdit = RetrievePerson(inputEmail);
 
                 // Check which columns need to be updated and construct the update query accordingly
-                string editPersonCommand = "UPDATE tblPerson SET";
+                string editPersonCommand = "UPDATE tblPerson SET ";
                 bool needComma = false;
 
                 if(!string.IsNullOrEmpty(newEmail))
                 {
-                    editPersonCommand += "email = @newEmail";
+                    editPersonCommand += "email = @newEmail ";
                     needComma = true;
                 }
 
@@ -187,7 +187,7 @@ namespace AdminSite.Controller
                     {
                         editPersonCommand += ",";
                     }
-                    editPersonCommand += "personName = @newName";
+                    editPersonCommand += "personName = @newName ";
                     needComma = true;
                 }
 
@@ -197,7 +197,7 @@ namespace AdminSite.Controller
                     {
                         editPersonCommand += ",";
                     }
-                    editPersonCommand += "personPassword = @newHashedPassword, salt = @newSalt";
+                    editPersonCommand += " personPassword = @newHashedPassword, salt = @newSalt ";
                     needComma = true;
                 }
 

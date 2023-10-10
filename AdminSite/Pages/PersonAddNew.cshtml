@@ -1,4 +1,30 @@
 ﻿@page
 @model AdminSite.Pages.PersonAddNewModel
 @{
+    ViewData["Title"] = "Admin Panel - Add New Staff";
 }
+<div class="header">
+    <h1>Add New Staff</h1>
+</div>
+<hr />
+
+<form method="post">
+  
+   <div class="form-group">
+        <label for="PersonName">New Name</label>
+        <input type="text" class="form-control" asp-for="NewName" />
+    </div>
+
+    <div class="form-group">
+        <label for="PersonEmail">New Email</label>
+        <input type="email" class="form-control" asp-for="NewEmail" />
+    </div>
+
+    <div class="form-group">
+        <label for="PersonPassword">New Password</label>
+        <input type="password" class="form-control" asp-for="NewPassword" />
+    </div>
+
+    <button type="submit" asp-page-handler="SaveChanges">Save changes</button>
+    <button type="submit" asp-page-handler="Cancel">Cancel</button>
+</form>
