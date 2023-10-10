@@ -24,9 +24,10 @@ namespace AdminSite.Pages
             PersonToDelete = _personmanager.RetrievePerson(SelectedEmail) ?? new Person();
         }
 
-        public IActionResult OnPostConfirm()
+        public IActionResult OnPostDeletePerson()
         {
             _personmanager.DeletePerson(SelectedEmail);
+
             return RedirectToPage("/AdminPanel");
         }
 
