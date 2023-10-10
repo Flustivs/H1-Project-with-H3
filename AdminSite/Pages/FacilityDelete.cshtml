@@ -1,0 +1,31 @@
+﻿@page
+@model AdminSite.Pages.FacilityDeleteModel
+@{
+    ViewData["Title"] = "Admin Panel - Delete Facility";
+}
+
+<div class="header">
+    <h1>Delete Facility</h1>
+</div>
+<hr />
+
+
+@if (Model.FacilityToDelete != null)
+{
+
+
+    <form method="post">
+        <input type="hidden" asp-for="SelectedFacility" />
+        <p>You are about to delete the following facility:</p>
+        <p>ID: @Model.FacilityToDelete.FacilityID</p>
+        <p>Name: @Model.FacilityToDelete.FacilityName</p>
+
+        <button type="submit" asp-page-handler="DeleteFacility">Confirm</button>
+        <button type="submit" asp-page-handler="Cancel">Cancel</button>
+    </form>
+}
+
+else
+{
+    <p>No facility found.</p>
+}

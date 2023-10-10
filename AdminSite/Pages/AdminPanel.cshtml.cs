@@ -51,7 +51,17 @@ namespace AdminSite.Pages
         // define a property SelectedStaffId to hold the selected staff member's email:
         [BindProperty]
         public string SelectedStaffEmail { get; set; }
+		[BindProperty]
+		public string SelectedFacilityID { get; set; }
+        z
+<<<<<<< Updated upstream
+=======
+		[BindProperty(Name = "TicketAmount")]
+        public int TicketAmount { get; set; }
 
+
+
+>>>>>>> Stashed changes
         public void OnGet()
         {
             // Get staff and customer lists
@@ -79,24 +89,7 @@ namespace AdminSite.Pages
             // Get AllFacilities
             AllFacilities = _facilityManager.GetAllFacilities();
         }
-
-            public string Price1()
-            {
-                string price = _priceManager.TicketsConnect(1);
-                return price;
-            }
-            public string Price2()
-            {
-                string price = _priceManager.TicketsConnect(2);
-                return price;
-            }
-            public string Price3()
-            {
-                string price = _priceManager.TicketsConnect(3);
-                return price;
-
-            }
-
+          
         public IActionResult OnPostEdit()
         {
             // Use _personmanager to retrieve the details of the selected staff member
@@ -111,5 +104,28 @@ namespace AdminSite.Pages
         {
             // Render a form to add a new staff member
         }
+<<<<<<< Updated upstream
     }
+=======
+
+		public IActionResult OnPostEditF()
+		{
+			// Redirect to the EditPerson page with the selected email as a query parameter
+			return RedirectToPage("/FacilityEdit", new { SelectedFacility = SelectedFacilityID });
+		}
+
+		public IActionResult OnPostDeleteF()
+		{
+			// Redirect to a specific page after deletion (for example, back to the same page)
+			return RedirectToPage("/FacilityDelete", new { SelectedFacility = SelectedFacilityID });
+		}
+
+		public IActionResult OnPostAddNewF()
+		{
+			// Redirect to a specific page after deletion (for example, back to the same page)
+			return RedirectToPage("/FacilityAddNew");
+		}
+
+	}
+>>>>>>> Stashed changes
 }
