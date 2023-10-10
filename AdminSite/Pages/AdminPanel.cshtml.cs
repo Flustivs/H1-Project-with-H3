@@ -88,14 +88,8 @@ namespace AdminSite.Pages
 
         public IActionResult OnPostEdit()
         {
-            // Use _personmanager to retrieve the details of the selected staff member
-            // And render an edit form
-
-
-
-
-            // Redirect to a specific page after deletion (for example, back to the same page)
-            return RedirectToPage("/AdminPanel");
+            // Redirect to the EditPerson page with the selected email as a query parameter
+            return RedirectToPage("/PersonEdit", new { SelectedEmail = SelectedStaffEmail });
         }
         /// <summary>
         /// In C#, methods with a return type, such as IActionResult, 
@@ -117,7 +111,7 @@ namespace AdminSite.Pages
             _personmanager.DeletePerson(SelectedStaffEmail);
 
             // Redirect to a specific page after deletion (for example, back to the same page)
-            return RedirectToPage("/AdminPanel");
+            return RedirectToPage("/PersonDelete", new { selectedEmail = SelectedStaffEmail });
         }
         public IActionResult OnPostAddNew()
         {
@@ -126,7 +120,7 @@ namespace AdminSite.Pages
 
 
             // Redirect to a specific page after deletion (for example, back to the same page)
-            return RedirectToPage("/AdminPanel");
+            return RedirectToPage("/PersonAddNew");
         }
     }
 }
