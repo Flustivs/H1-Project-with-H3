@@ -60,6 +60,7 @@ namespace AdminSite.Pages
         public int TicketAmount { get; set; }
 
 
+
         public void OnGet()
         {
             // Get staff and customer lists
@@ -108,20 +109,15 @@ namespace AdminSite.Pages
         /// or provide some response to indicate the success or failure of the operation.
         /// </summary>
         /// <returns></returns>
+        
         public IActionResult OnPostDelete()
         {
-            // Use _personmanager to delete the selected staff member
-            _personmanager.DeletePerson(SelectedStaffEmail);
-
             // Redirect to a specific page after deletion (for example, back to the same page)
             return RedirectToPage("/PersonDelete", new { selectedEmail = SelectedStaffEmail });
         }
+
         public IActionResult OnPostAddNew()
         {
-            // Render a form to add a new staff member
-
-
-
             // Redirect to a specific page after deletion (for example, back to the same page)
             return RedirectToPage("/PersonAddNew");
         }

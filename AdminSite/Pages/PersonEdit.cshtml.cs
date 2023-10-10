@@ -56,6 +56,7 @@ namespace AdminSite.Pages
              * If it doesn't, you may need to provide some default values when creating the new Person object.*/
              PersonToEdit = _personmanager.RetrievePerson(SelectedEmail) ?? new Person(); 
         }
+        //public string emailToEdit = "";
 
         public IActionResult OnPostSaveChanges()
         {
