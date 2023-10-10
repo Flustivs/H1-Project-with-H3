@@ -53,12 +53,9 @@
 				Månedpas = @Model.Price2() DKK <br />
 				Årpas = @Model.Price3() DKK
 			</p>
-			<a href="#" class="editPriceButton">
-				<span>Rediger</span>
-			</a>
-			<a href="#" class="saveButton">
-				<span>Gem</span>
-			</a>
+			<form method="post">
+				<button type="submit" asp-page-handler="PriceEdit">Edit</button>
+			</form>
 		</div>
 
 		<div class="ticketsBox">
@@ -68,17 +65,10 @@
 				Købte billetter i alt: 9999
 			</p>
 			<p class="lastBoughtTickets">
-				Seneste 5 købte billetter <br />
-				1. Sofia Rodriguez <br />
-				2. Luca Bianchi <br />
-				3. Emily Smith <br />
-				4. Raj Patel <br />
-				5. Aisha Khan <br />
-				6. Pablo Fernandez <br />
-				7. Isabella Santos <br>
-				8. Tuki Tanaka <br />
-				9. Elise Dupont <br />
-				10. Ahmed Ali
+				@foreach (var item in Model.lastpurchase())
+				{
+					<p>@item</p>
+				}
 			</p>
 		</div>
 

@@ -3,10 +3,6 @@ using AdminSite.DAL;
 using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.VisualBasic;
-using static System.Net.WebRequestMethods;
-using System.Diagnostics.Metrics;
-using System;
 
 namespace AdminSite.Pages
 {
@@ -24,32 +20,38 @@ namespace AdminSite.Pages
         public List<Person> Customers { get; set; }
         public List<Facility> AllFacilities { get; set; }
 
-        private PriceManager ticketManager { get; set; }
-        // Gets the data from each row of the database.
-        public string Price1()
+		private readonly TicketManager _ticketManager;
+		private readonly PriceManager _priceManager;
+		public string Price1()
         {
-            string price = ticketManager.TicketsConnect(1);
+            string price = _priceManager.TicketsConnect(1);
             return price;
         }
         public string Price2()
         {
-            string price = ticketManager.TicketsConnect(2);
+            string price = _priceManager.TicketsConnect(2);
             return price;
         }
         public string Price3()
         {
-            string price = ticketManager.TicketsConnect(3);
+            string price = _priceManager.TicketsConnect(3);
             return price;
 
         }
+		public List<string> lastpurchase()
+		{
+			List<string> list = _ticketManager.LatestPurchases();
+			return list;
+		}
 
-        public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager, PriceManager priceManager)
+		public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager, PriceManager priceManager, TicketManager ticketManager)
         {
             _logger = logger;
             _personmanager = personManager;
             _logInManager = logInManager;
             _facilityManager = facilityManager;
-            ticketManager = priceManager;
+            _priceManager = priceManager;
+            _ticketManager = ticketManager;
         }
 
         // define a property SelectedStaffId to hold the selected staff member's email:
@@ -89,7 +91,10 @@ namespace AdminSite.Pages
             AllFacilities = _facilityManager.GetAllFacilities();
         }
 
-
+        public IActionResult OnPostPriceEdit()
+        {
+            return RedirectToPage("/PriceChanger");
+        }
         public IActionResult OnPostEdit()
         {
             // Redirect to the EditPerson page with the selected email as a query parameter

@@ -19,6 +19,8 @@ builder.Services.AddSingleton<FacilityManager>();
 builder.Services.AddSingleton<PriceManager>();
 builder.Services.AddSingleton<OrderManager>();
 builder.Services.AddSingleton<AboutController>();
+builder.Services.AddSingleton<TicketManager>();
+
 
 // ConnectionString registered in the ConfigureServices:
 builder.Services.Configure<ConnectionString>(builder.Configuration.GetSection("ConnectionStrings"));
