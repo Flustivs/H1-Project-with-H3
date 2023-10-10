@@ -68,7 +68,7 @@
     .monthlyPassButton:hover {
         background-color: #0056b3; /* Ændrer baggrundsfarven ved hover */
         border-color: #0056b3; /* Ændrer kantlinjefarven ved hover */
-        transform: scale(1.05); /* Ændrer knappens størrelse ved hover */
+        transform: scale(1.05);
     }
 
     .monthlyPassButton span {
