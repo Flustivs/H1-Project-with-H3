@@ -1,33 +1,44 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using AdminSite.DAL;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace AdminSite.Controller
 {
+    /// <summary>
+    /// This class is to get the price of the different types of tickets,
+    /// For example the daypass ticket cost 175 and i get that from the database so if the admins change the price in the admin panel,
+    /// these prices updates and is the same value as the new prices.
+    /// </summary>
     public class PriceManager
     {
         private string _ticketvalue;
+        private readonly string _connectionString;
+
+        public PriceManager(IOptions<ConnectionString> connectionString)
+        {
+            _connectionString = connectionString.Value.DefaultConnection;
+        }
         public string TicketsConnect(byte i)
         {
-            //string datasource = @"LAPTOP-94N0K9HA\MSSQLSERVER01"; // Test on local pc
-            string connString = @"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=SuperFunFunParkDB;Integrated Security=True;TrustServerCertificate=True;";
-            SqlConnection conn = new SqlConnection(connString); // Makes a new connection to Database
+            SqlConnection conn = new SqlConnection(_connectionString); // Makes a new connection to Database
 
             try
             {
-                conn.Open(); // if theres a connection it opens it
-                string Daypass = "SELECT price FROM tblTicketType WHERE ticketTypeID = 1";
-                string MonthlyPass = "SELECT price FROM tblTicketType WHERE ticketTypeID = 2";
-                string YearlyPass = "SELECT price FROM tblTicketType WHERE ticketTypeID = 3";
+                conn.Open();
+                string DayPass = "SELECT price FROM tblTicketType WHERE ticketTypeID = 1";
+                string MonthPass = "SELECT price FROM tblTicketType WHERE ticketTypeID = 2";
+                string YearPass = "SELECT price FROM tblTicketType WHERE ticketTypeID = 3";
                 switch (i)
                 {
                     case 1:
-                        GetTicketPrice(Daypass, conn);
+                        GetTicketPrice(DayPass, conn);
                         break;
                     case 2:
-                        GetTicketPrice(MonthlyPass, conn);
+                        GetTicketPrice(MonthPass, conn);
                         break;
                     case 3:
-                        GetTicketPrice(YearlyPass, conn);
+                        GetTicketPrice(YearPass, conn);
                         break;
                 }
             }

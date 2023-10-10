@@ -1,264 +1,262 @@
 ﻿@page
 @model AdminSite.Pages.AdminPanelModel
 @{
-    ViewData["Title"] = "Admin Panel - SFFP";
+	ViewData["Title"] = "Admin Panel - SFFP";
 }
 
 <div class="header">
-    <h1>Admin Panel</h1>
+	<h1>Admin Panel</h1>
 </div>
 <hr />
 
 
 @* <html></html> *@
 <head>
-    <style>
-        table {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+	<style>
+		table {
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
 
-            table td, table th {
-                border: 2px solid #ddd;
-                padding: 8px;
-            }
+			table td, table th {
+				border: 2px solid #ddd;
+				padding: 8px;
+			}
 
-            table tr:nth-child(even) {
-                background-color: #d9e6cf;
-            }
+			table tr:nth-child(even) {
+				background-color: #d9e6cf;
+			}
 
-            table tr:hover {
-                background-color: #b5cca3;
-            }
+			table tr:hover {
+				background-color: #b5cca3;
+			}
 
-            table th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: center;
-                background-color: #9EB384;
-                color: white;
-            }
-    </style>
+			table th {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: center;
+				background-color: #9EB384;
+				color: white;
+			}
+	</style>
 
 </head>
 
 <body>
-    <div class="top-row">
-        <div class="priceBox">
-            <a class="priceBoxBigtext">Pris oversigt</a>
-            <hr class="priceBoxHR" />
-            <p class="priceBoxText">
-                Dagpas = 175 DKK <br />
-                Månedpas = 350 DKK <br />
-                Årpas = 1570 DKK
-            </p>
-            <a href="#" class="editPriceButton">
-                <span>Rediger</span>
-            </a>
-            <a href="#" class="saveButton">
-                <span>Gem</span>
-            </a>
-        </div>
 
-        <div class="ticketsBox">
-            <a class="ticketsBoxBigtext">Billet oversigt</a>
-            <hr class="ticketsBoxHR" />
-            <p class="totalTickets">
-                Købte billetter i alt: 9999
-            </p>
-            <p class="lastBoughtTickets">
-                Seneste 5 købte billetter <br />
-                1. Sofia Rodriguez <br />
-                2. Luca Bianchi <br />
-                3. Emily Smith <br />
-                4. Raj Patel <br />
-                5. Aisha Khan <br />
-                6. Pablo Fernandez <br />
-                7. Isabella Santos <br>
-                8. Tuki Tanaka <br />
-                9. Elise Dupont <br />
-                10. Ahmed Ali
-            </p>
-        </div>
+	<div class="top-row">
+		<div class="priceBox">
+			<a class="priceBoxBigtext">Pris oversigt</a>
+			<hr class="priceBoxHR" />
+			<p class="priceBoxText">
+				Dagpas = @Model.Price1() DKK <br />
+				Månedpas = @Model.Price2() DKK <br />
+				Årpas = @Model.Price3() DKK
+			</p>
+			<a href="#" class="editPriceButton">
+				<span>Rediger</span>
+			</a>
+			<a href="#" class="saveButton">
+				<span>Gem</span>
+			</a>
+		</div>
 
-
-       
-    </div>
-
-    <div class="bottom-row">
-        
-
-        <div class="workersBox">
-            <a class="workersBoxBigtext">Oversigt over ansatte</a>
-            <hr class="workersBoxHR" />
-            <p>
-              
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-
-                    </tr>
-
-                    @if (Model.Staff != null)
-                    {
-
-                        foreach (var person in Model.Staff)
-                        {
-                            
-                            <tr>
-                                <td>@person.PersonID</td>
-                                <td>@person.PersonName</td>
-                                <td>@person.Email</td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="4">No person found.</td>
-                        </tr>
-                    }
-                </table>
-
-            </p>
-            <form method="post">
-                <select asp-for="SelectedStaffEmail" asp-items="@(new SelectList(Model.Staff, "PersonID", "PersonName"))">
-                    <option value="">-- Select Staff --</option>
-                </select>
-                <button type="submit" asp-page-handler="Edit">Edit</button>
-                <button type="submit" asp-page-handler="Delete">Delete</button>
-                <button type="submit" asp-page-handler="AddNew">Add New Staff</button>
-            </form>
-           
+		<div class="ticketsBox">
+			<a class="ticketsBoxBigtext">Billet oversigt</a>
+			<hr class="ticketsBoxHR" />
+			<p class="totalTickets">
+				Købte billetter i alt: 9999
+			</p>
+			<p class="lastBoughtTickets">
+				Seneste 5 købte billetter <br />
+				1. Sofia Rodriguez <br />
+				2. Luca Bianchi <br />
+				3. Emily Smith <br />
+				4. Raj Patel <br />
+				5. Aisha Khan <br />
+				6. Pablo Fernandez <br />
+				7. Isabella Santos <br>
+				8. Tuki Tanaka <br />
+				9. Elise Dupont <br />
+				10. Ahmed Ali
+			</p>
+		</div>
 
 
-            </a>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-        </div>
 
-        <div class="assigmentsBox">
-            <a class="assigmentsBoxBigtext">Forlystelser</a>
-            <hr class="assigmentsBoxHR" />
-            <p>
-                <table>
-                    <tr>
-                        <th>Facility ID</th>
-                        <th>Facility Name</th>
-                        <th>Next Maintenance</th>
-                        <th>Staff</th>
+	</div>
 
-                    </tr>
+	<div class="bottom-row">
+		<div class="workersBox">
+			<a class="workersBoxBigtext">Oversigt over ansatte</a>
+			<hr class="workersBoxHR" />
+			<div style="max-height: 200px; overflow-y: auto;">
+				<table>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Email</th>
+						</tr>
+					<tbody>
+						@if (Model.Staff != null)
+						{
+							foreach (var person in Model.Staff)
+							{
+								<tr>
+									<td>@person.PersonID</td>
+									<td>@person.PersonName</td>
+									<td>@person.Email</td>
+								</tr>
+							}
+						}
+						else
+						{
+							<tr>
+								<td colspan="3">No person found.</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
 
-                    @if (Model.AllFacilities != null)
-                    {
+			<form method="post">
+				<select asp-for="SelectedStaffEmail" asp-items="@(new SelectList(Model.Staff, "PersonID", "PersonName"))">
+					<option value="">-- Select Staff --</option>
+				</select>
+				<button type="submit" asp-page-handler="Edit">Edit</button>
+				<button type="submit" asp-page-handler="Delete">Delete</button>
+				@* <button type="submit" asp-page-handler="Save">Save</button> *@
+				<button type="submit" asp-page-handler="AddNew">Add New Staff</button>
+			</form>
 
-                        foreach (var facility in Model.AllFacilities)
-                        {
+			</a>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+		</div>
 
-                            <tr>
-                                <td>@facility.FacilityID</td>
-                                <td>@facility.FacilityName</td>
-                                <td>@facility.NextMaintenanceDate</td>
-                                <td>
-                                    @foreach(var staffName in facility.MaintenanceStaff)
-                                    {
-                                        @staffName  <br />
-                                    }
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="4">No facility found.</td>
-                        </tr>
-                    }
-                </table>
+		<div class="assigmentsBox">
+			<a class="assigmentsBoxBigtext">Forlystelser</a>
+			<hr class="assigmentsBoxHR" />
+			<div style="max-height: 200px; overflow-y: auto;">
+				<table>
+					<tr>
+						<th>Facility ID</th>
+						<th>Facility Name</th>
+						<th>Next Maintenance</th>
+						<th>Staff</th>
 
-            </p>
-            <a href="#" class="deleteButton">
-                <span>Slet</span>
-            </a>
-            <a href="#" class="editButton">
-                <span>Rediger</span>
-            </a>
-            <a href="#" class="saveButton">
-                <span>Gem</span>
-            </a>
-        </div>
+					</tr>
 
-    </div>
-    <br/>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+					@if (Model.AllFacilities != null)
+					{
 
-    <div class="top-row">
-        <div class="priceBox">
-            <a class="priceBoxBigtext">Customer Overview</a>
-            <hr class="priceBoxHR" />
-            <p class="priceBoxText">
-                <br>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
+						foreach (var facility in Model.AllFacilities)
+						{
 
-                    </tr>
+							<tr>
+								<td>@facility.FacilityID</td>
+								<td>@facility.FacilityName</td>
+								<td>@facility.NextMaintenanceDate</td>
+								<td>
+									@foreach (var staffName in facility.MaintenanceStaff)
+									{
+										@staffName  <br />
+									}
+								</td>
+							</tr>
+						}
+					}
+					else
+					{
+						<tr>
+							<td colspan="4">No facility found.</td>
+						</tr>
+					}
+				</table>
 
-                    @if (Model.Customers != null)
-                    {
+			</div>
+			<a href="#" class="deleteButton">
+				<span>Slet</span>
+			</a>
+			<a href="#" class="editButton">
+				<span>Rediger</span>
+			</a>
+			<a href="#" class="saveButton">
+				<span>Gem</span>
+			</a>
+		</div>
 
-                        foreach (var person in Model.Customers)
-                        {
+	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
 
-                            <tr>
-                                <td>@person.PersonID</td>
-                                <td>@person.PersonName</td>
-                                <td>@person.Email</td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="4">No person found.</td>
-                        </tr>
-                    }
-                </table>
-            </p>
-            
-            </a>
-        </div>
+	<div class="top-row">
+		<div class="priceBox">
+			<a class="priceBoxBigtext">Customer Overview</a>
+			<hr class="priceBoxHR" />
+			<p class="priceBoxText">
+				<div style="max-height: 200px; overflow-y: auto;">
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Email</th>
+							</tr>
+						</thead>
+						<tbody>
+							@if (Model.Customers != null)
+							{
+								foreach (var person in Model.Customers)
+								{
+									<tr>
+										<td>@person.PersonID</td>
+										<td>@person.PersonName</td>
+										<td>@person.Email</td>
+									</tr>
+								}
+							}
+							else
+							{
+								<tr>
+									<td colspan="3">No person found.</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
 
-        <div class="ticketsBox">
-            <a class="ticketsBoxBigtext">PlaceHolder</a>
-            <hr class="ticketsBoxHR" />
-            <p class="totalTickets">
-                
-            </p>
-            <p class="lastBoughtTickets">
-                  <br />
-                  <br />
-                  <br />
-                
-            </p>
-        </div>
-    </div>
+			</p>
+
+			</a>
+		</div>
+
+		<div class="ticketsBox">
+			<a class="ticketsBoxBigtext">PlaceHolder</a>
+			<hr class="ticketsBoxHR" />
+			<p class="totalTickets">
+
+			</p>
+			<p class="lastBoughtTickets">
+				<br />
+				<br />
+				<br />
+
+			</p>
+		</div>
+	</div>
+
 </body>
 

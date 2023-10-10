@@ -13,9 +13,20 @@
     margin: 30px;
 }
 
-.priceBox, .assigmentsBox {
+.priceBox{
     flex: 1;
-    height: 310px;
+    height: 350px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.assigmentsBox {
+    flex: 1;
+    height: 370px;
     width: 100px;
     margin: 10px;
     border-radius: 10px;
@@ -40,9 +51,21 @@
     margin: 30px;
 }
 
+
 .ticketsBox, .workersBox {
     flex: 1;
-    height: 250px;
+    height: 300px;
+    width: calc(50% - 20px);
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 2px solid black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.workersBox {
+    flex: 1;
+    height: 300px;
     width: calc(50% - 20px);
     margin: 10px;
     border-radius: 10px;

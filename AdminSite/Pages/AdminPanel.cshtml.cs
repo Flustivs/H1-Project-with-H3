@@ -23,7 +23,9 @@ namespace AdminSite.Pages
         public List<Person> Staff { get; set; }
         public List<Person> Customers { get; set; }
         public List<Facility> AllFacilities { get; set; }
+
         private PriceManager ticketManager { get; set; }
+        // Gets the data from each row of the database.
         public string Price1()
         {
             string price = ticketManager.TicketsConnect(1);
@@ -41,13 +43,13 @@ namespace AdminSite.Pages
 
         }
 
-        public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager)
+        public AdminPanelModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager, PriceManager priceManager)
         {
             _logger = logger;
             _personmanager = personManager;
             _logInManager = logInManager;
             _facilityManager = facilityManager;
-            ticketManager = new PriceManager();
+            ticketManager = priceManager;
         }
 
         // define a property SelectedStaffId to hold the selected staff member's email:
@@ -86,6 +88,7 @@ namespace AdminSite.Pages
             AllFacilities = _facilityManager.GetAllFacilities();
         }
 
+
         public IActionResult OnPostEdit()
         {
             // Redirect to the EditPerson page with the selected email as a query parameter
@@ -122,5 +125,6 @@ namespace AdminSite.Pages
             // Redirect to a specific page after deletion (for example, back to the same page)
             return RedirectToPage("/PersonAddNew");
         }
+
     }
 }
