@@ -22,20 +22,19 @@ namespace AdminSite.Pages
         public List<Facility> AllFacilities { get; set; }
 
 		private readonly TicketManager _ticketManager;
-		private readonly PriceManager _priceManager;
 		public string Price1()
         {
-            string price = _ticketManager.TicketsConnect(1);
+            string price = _priceManager.TicketsConnect(1);
             return price;
         }
         public string Price2()
         {
-            string price = _ticketManager.TicketsConnect(2);
+            string price = _priceManager.TicketsConnect(2);
             return price;
         }
         public string Price3()
         {
-            string price = _ticketManager.TicketsConnect(3);
+            string price = _priceManager.TicketsConnect(3);
             return price;
 
         }
