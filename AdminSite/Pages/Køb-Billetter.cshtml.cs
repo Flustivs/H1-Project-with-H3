@@ -42,7 +42,7 @@ namespace AdminSite.Pages
         public IActionResult OnPost()
         {
             Console.WriteLine("This many tickets: " +  TicketAmount + "\nThis is your orderID: " + order.OrderConnect());
-            return RedirectToPage();
+            return RedirectToPage("/BuyTicket");
         }
     }
 }
