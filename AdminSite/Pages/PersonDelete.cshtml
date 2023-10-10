@@ -11,13 +11,15 @@
 
 @if(Model.PersonToDelete != null)
 {
-   @*  <input type="hidden" asp-for="SelectedEmail" /> *@
-    <p>You are about to delete the following user:</p>
-    <p>ID: @Model.PersonToDelete.PersonID</p>
-    <p>Name: @Model.PersonToDelete.PersonName</p>
-    <p>Email: @Model.PersonToDelete.Email</p>
+  
 
     <form method="post">
+         <input type="hidden" asp-for="SelectedEmail" />
+        <p>You are about to delete the following user:</p>
+        <p>ID: @Model.PersonToDelete.PersonID</p>
+        <p>Name: @Model.PersonToDelete.PersonName</p>
+        <p>Email: @Model.PersonToDelete.Email</p>
+
         <button type="submit" asp-page-handler="DeletePerson">Confirm</button>
         <button type="submit" asp-page-handler="Cancel">Cancel</button>
     </form>

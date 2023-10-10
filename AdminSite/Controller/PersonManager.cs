@@ -152,6 +152,42 @@ namespace AdminSite.Controller
                 }
             }
         }
+        /// <summary>
+        /// Assign a specific role based on personID
+        /// insert into tblPersonRole
+        /// </summary>
+        /// <param name="personID"></param>
+        /// <param name="roleId"></param>
+        public void SetRole(int personID, int roleId)
+        {
+            using(SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd =  new SqlCommand("Insert_tblPersonRole", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters to the stored procedure
+                    cmd.Parameters.AddWithValue("@personID", personID);
+                    cmd.Parameters.AddWithValue("@roleID", roleId);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        Debug.WriteLine("Person role added successfully!");
+                    }
+                    catch (SqlException ex)
+                    {
+                        Debug.WriteLine("SQL Error: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            
+            }
+        }
 
         /// <summary>
         /// To enable partial updates (updating one or two columns) in database, 
@@ -334,6 +370,10 @@ namespace AdminSite.Controller
                                 Debug.WriteLine("Error: " + ex.Message);
                             }
                         }
+
+                        // Commit the transaction if all operations succeed
+                        transaction.Commit(); 
+
                     }
                 }
             }

@@ -28,6 +28,12 @@ namespace AdminSite.Pages
         public IActionResult OnPostSaveChanges()
         {
             _personmanager.AddPerson(NewEmail, NewName, NewPassword);
+
+            Person personToAddRole = _personmanager.RetrievePerson(NewEmail);
+
+            // Assign role Staff to newly added staff
+            _personmanager.SetRole(personToAddRole.PersonID, 2);
+
             return RedirectToPage("/AdminPanel");
         }
 
