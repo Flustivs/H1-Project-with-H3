@@ -153,14 +153,101 @@ namespace AdminSite.Controller
             }
         }
 
-        public void EditPerson(string inputEmail, string name, string password)
+        /// <summary>
+        /// To enable partial updates (updating one or two columns) in database, 
+        /// modify the EditPerson method to accept nullable parameters for the columns being updated. 
+        /// </summary>
+        /// <param name="inputEmail"></param>
+        /// <param name="newEmail"></param>
+        /// <param name="newName"></param>
+        /// <param name="newPassword"></param>
+        public void EditPerson(string inputEmail, string newEmail = null, string newName = null, string newPassword = null)
         {
             List<Person> persons = GetAllPersons();
+            string newSalt = "";
+            string newHashedPassword = "";
 
             if (persons.FirstOrDefault(p => p.Email == inputEmail) != null)
             {
                 Person personToEdit = RetrievePerson(inputEmail);
 
+                // Check which columns need to be updated and construct the update query accordingly
+                string editPersonCommand = "UPDATE tblPerson SET";
+                bool needComma = false;
+
+                if(!string.IsNullOrEmpty(newEmail))
+                {
+                    editPersonCommand += "email = @newEmail";
+                    needComma = true;
+                }
+
+                if(!string.IsNullOrEmpty (newName))
+                {
+                    if(needComma)
+                    {
+                        editPersonCommand += ",";
+                    }
+                    editPersonCommand += "personName = @newName";
+                    needComma = true;
+                }
+
+                if (!string.IsNullOrEmpty(newPassword))
+                {
+                    if (needComma)
+                    {
+                        editPersonCommand += ",";
+                    }
+                    editPersonCommand += "personPassword = @newHashedPassword, salt = @newSalt";
+                    needComma = true;
+                }
+
+                editPersonCommand += "WHERE personID = @PersonID";
+
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(editPersonCommand, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@personID", personToEdit.PersonID);
+
+                        if (!string.IsNullOrEmpty(newEmail))
+                        {
+                            cmd.Parameters.AddWithValue("@newEmail", newEmail);
+                        }
+
+                        if (!string.IsNullOrEmpty(newName))
+                        {
+                            cmd.Parameters.AddWithValue("@newName", newName);
+                        }
+
+                        if (!string.IsNullOrEmpty(newPassword))
+                        {
+                            // Generate new salt, then get newHashedPassword
+                            byte[] saltBytes = GenerateSalt();
+                            byte[] hashedPasswordBytes = HashPassword(Encoding.UTF8.GetBytes(newPassword), saltBytes);
+
+                            newHashedPassword = Convert.ToBase64String(hashedPasswordBytes);
+                            newSalt = Convert.ToBase64String(saltBytes);
+
+                            cmd.Parameters.AddWithValue("@newHashedPassword", newHashedPassword);
+                            cmd.Parameters.AddWithValue("@newSalt", newSalt);
+                        }
+
+                        try
+                        {
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            Debug.WriteLine("Person updated successfully!");
+                        }
+                        catch (SqlException ex)
+                        {
+                            Debug.WriteLine("SQL Error: " + ex.Message);
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Error: " + ex.Message);
+                        }
+                    }
+                }
             }
             else
             {
@@ -185,7 +272,7 @@ namespace AdminSite.Controller
                 Person personToDelete = RetrievePerson(inputEmail);
 
                 string deletePersonRoleCommand = "DELETE FROM tblPersonRole WHERE personID = @PersonID";
-                string deletePersonFacilityCommand = "DELETE FROM tblPersonRole WHERE personID = @PersonID";
+                string deletePersonFacilityCommand = "DELETE FROM tblPersonFacility WHERE personID = @PersonID";
                 string deletePersonCommand = "DELETE FROM tblPerson WHERE personID = @PersonID";
 
                 using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -212,8 +299,24 @@ namespace AdminSite.Controller
                             }
                         }
 
+                        // also delete PersonFacility associated to the person to be deleted
+                        using (SqlCommand cmd = new SqlCommand(deletePersonFacilityCommand, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@PersonID", personToDelete.PersonID);
+                            try
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                            catch (SqlException ex)
+                            {
+                                Debug.WriteLine("SQL Error: " + ex.Message);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine("Error: " + ex.Message);
+                            }
+                        }
 
-                        // also delete orders associated to the person to be deleted?
                         // Delete Person 
                         using (SqlCommand cmd = new SqlCommand(deletePersonCommand, conn, transaction))
                         {
@@ -231,18 +334,7 @@ namespace AdminSite.Controller
                                 Debug.WriteLine("Error: " + ex.Message);
                             }
                         }
-
-
-
-
-
-
-
                     }
-
-
-
-
                 }
             }
             else

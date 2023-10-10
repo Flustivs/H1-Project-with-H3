@@ -96,12 +96,12 @@ namespace AdminSite.Controller
             catch (SqlException ex)
             {
                 Console.WriteLine("SQL Error: " + ex.Message);
-                return null;
+                return new List<Facility>(); 
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Error: " + ex.Message);
-                return null;
+                return new List<Facility>();
             }
         }
     }
