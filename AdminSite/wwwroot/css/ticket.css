@@ -28,6 +28,7 @@ hr {
     text-align: center;
     border: 2px solid black;
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
 }
 
     .dailyPass:hover {
@@ -59,6 +60,7 @@ hr {
     text-align: center;
     border: 2px solid black;
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
 }
 
     .monthlyPass:hover {
@@ -83,6 +85,7 @@ hr {
     text-align: center;
     border: 2px solid black;
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
 }
 
     .yearlyPass:hover {

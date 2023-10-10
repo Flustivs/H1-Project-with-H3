@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminSite.Pages
 {
-    public class RegistrerModel : PageModel
+    public class AttractionModel : PageModel
     {
         public void OnGet()
         {

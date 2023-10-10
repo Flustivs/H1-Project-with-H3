@@ -1,0 +1,14 @@
+﻿@page
+@model AdminSite.Pages.PriceChangerModel
+@{
+    ViewData["Title"] = "Admin Panel - Edit Staff";
+}
+<div class="header">
+    <h1>Edit Staff</h1>
+</div>
+<hr />
+<body>
+    <p>Prissen lige nu for et Dag Pas = @Model.Price1()  <input type="number" id="DayPas" /></p>
+    <p>Prissen lige nu for et Måned Pas = @Model.Price2()  <input type="number" id="MonthPas" /></p>
+    <p>Prissen lige nu for et År Pas = @Model.Price3()  <input type="number" id="YearPas" /></p>
+</body>

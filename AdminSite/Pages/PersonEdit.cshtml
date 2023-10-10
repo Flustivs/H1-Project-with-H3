@@ -1,0 +1,31 @@
+﻿@page
+@model AdminSite.Pages.PersonEditModel
+@{
+    ViewData["Title"] = "Admin Panel - Edit Staff";
+}
+<div class="header">
+    <h1>Edit Staff</h1>
+</div>
+<hr />
+
+<form method="post">
+    <input type="hidden" asp-for="PersonToEdit.PersonID" />
+    <input type="hidden" asp-for="SelectedEmail" />
+    <div class="form-group">
+        <label for="PersonName">New Name</label>
+        <input type="text" class="form-control" placeholder="@Model.PersonToEdit.PersonName" asp-for="NewName" />
+    </div>
+
+    <div class="form-group">
+        <label for="PersonEmail">New Email</label>
+        <input type="email" class="form-control" asp-for="NewEmail" />
+    </div>
+
+    <div class="form-group">
+        <label for="PersonPassword">New Password</label>
+        <input type="password" class="form-control" asp-for="NewPassword" />
+    </div>
+
+    <button type="submit" asp-page-handler="SaveChanges" >Save changes</button>
+    <button type="submit" asp-page-handler="Cancel">Cancel</button>
+</form>
