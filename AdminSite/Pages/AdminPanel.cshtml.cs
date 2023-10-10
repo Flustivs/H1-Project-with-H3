@@ -113,7 +113,7 @@ namespace AdminSite.Pages
         public IActionResult OnPostDelete()
         {
             // Redirect to a specific page after deletion (for example, back to the same page)
-            return RedirectToPage("/PersonDelete", new { selectedEmail = SelectedStaffEmail });
+            return RedirectToPage("/PersonDelete", new { SelectedEmail = SelectedStaffEmail });
         }
 
         public IActionResult OnPostAddNew()

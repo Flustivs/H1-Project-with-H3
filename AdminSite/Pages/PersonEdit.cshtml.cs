@@ -7,11 +7,8 @@ namespace AdminSite.Pages
 {
     public class PersonEditModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly PersonManager _personmanager;
-        private readonly LogInManager _logInManager;
-        private readonly FacilityManager _facilityManager;
-
+        // private readonly FacilityManager _facilityManager;
         public Person PersonToEdit { get; set; }
 
         // Property to hold the list of persons
@@ -21,12 +18,10 @@ namespace AdminSite.Pages
         //public List<Person> Customers { get; set; }
         //public List<Facility> AllFacilities { get; set; }
 
-        public PersonEditModel(ILogger<IndexModel> logger, PersonManager personManager, LogInManager logInManager, FacilityManager facilityManager)
+        public PersonEditModel(PersonManager personManager)
         {
-            _logger = logger;
+            //_logger = logger;
             _personmanager = personManager;
-            _logInManager = logInManager;
-            _facilityManager = facilityManager;
             PersonToEdit = new Person();
         }
 
@@ -56,8 +51,7 @@ namespace AdminSite.Pages
              * If it doesn't, you may need to provide some default values when creating the new Person object.*/
              PersonToEdit = _personmanager.RetrievePerson(SelectedEmail) ?? new Person(); 
         }
-        //public string emailToEdit = "";
-
+        
         public IActionResult OnPostSaveChanges()
         {
             _personmanager.EditPerson(SelectedEmail, NewEmail, NewName, NewPassword);
