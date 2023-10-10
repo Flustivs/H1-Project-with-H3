@@ -12,6 +12,7 @@ namespace AdminSite.Pages
         private readonly PersonManager _personmanager;
         private readonly LogInManager _logInManager;
         private readonly FacilityManager _facilityManager;
+        private readonly PriceManager _priceManager;
 
         // Property to hold the list of persons
         public List<Person> AllPersons { get; set; }
@@ -57,6 +58,13 @@ namespace AdminSite.Pages
         // define a property SelectedStaffId to hold the selected staff member's email:
         [BindProperty]
         public string SelectedStaffEmail { get; set; }
+        [BindProperty]
+        public string SelectedFacilityID { get; set; }
+        [BindProperty(Name = "TicketAmount")]
+        public int TicketAmount { get; set; }
+
+
+
 
         [BindProperty(Name = "TicketAmount")]
         public int TicketAmount { get; set; }
@@ -91,10 +99,12 @@ namespace AdminSite.Pages
             AllFacilities = _facilityManager.GetAllFacilities();
         }
 
+
         public IActionResult OnPostPriceEdit()
         {
             return RedirectToPage("/PriceChanger");
         }
+
         public IActionResult OnPostEdit()
         {
             // Redirect to the EditPerson page with the selected email as a query parameter
@@ -125,6 +135,25 @@ namespace AdminSite.Pages
         {
             // Redirect to a specific page after deletion (for example, back to the same page)
             return RedirectToPage("/PersonAddNew");
+        }
+
+
+        public IActionResult OnPostEditF()
+        {
+            // Redirect to the EditPerson page with the selected email as a query parameter
+            return RedirectToPage("/FacilityEdit", new { SelectedFacility = SelectedFacilityID });
+        }
+
+        public IActionResult OnPostDeleteF()
+        {
+            // Redirect to a specific page after deletion (for example, back to the same page)
+            return RedirectToPage("/FacilityDelete", new { SelectedFacility = SelectedFacilityID });
+        }
+
+        public IActionResult OnPostAddNewF()
+        {
+            // Redirect to a specific page after deletion (for example, back to the same page)
+            return RedirectToPage("/FacilityAddNew");
         }
 
     }

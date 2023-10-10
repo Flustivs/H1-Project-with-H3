@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model AdminSite.Pages.AdminPanelModel
 @{
 	ViewData["Title"] = "Admin Panel - SFFP";
@@ -43,6 +43,8 @@
 
 </head>
 
+
+<body>
 <body class="bg">
 	<div class="top-row">
 		<div class="priceBox">
@@ -71,10 +73,8 @@
 				}
 			</p>
 		</div>
-
-
-
 	</div>
+
 
 	<div class="bottom-row">
 		<div class="workersBox">
@@ -109,6 +109,8 @@
 				</table>
 			</div>
 
+			<br />
+
 			<form method="post">
 				<select asp-for="SelectedStaffEmail" asp-items="@(new SelectList(Model.Staff, "Email" , "PersonName"))">
 					<option value="">-- Select Staff --</option>
@@ -119,13 +121,9 @@
 				<button type="submit" asp-page-handler="AddNew">Add New Staff</button>
 			</form>
 
+
 			</a>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
+			
 		</div>
 
 		<div class="assigmentsBox">
@@ -168,16 +166,7 @@
 					}
 				</table>
 
-			</div>
-			<a href="#" class="deleteButton">
-				<span>Slet</span>
-			</a>
-			<a href="#" class="editButton">
-				<span>Rediger</span>
-			</a>
-			<a href="#" class="saveButton">
-				<span>Gem</span>
-			</a>
+			
 		</div>
 
 	</div>
@@ -246,5 +235,6 @@
 			</p>
 		</div>
 	</div>
+
 </body>
 
