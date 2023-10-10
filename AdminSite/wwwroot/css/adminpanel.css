@@ -8,6 +8,10 @@
     justify-content: center;
 }
 
+.header {
+    color: white;
+}
+
 .priceBoxHR, .assigmentsBoxHR {
     width: 860px;
     margin: 30px;
@@ -91,8 +95,18 @@
 
 .workersBox {
     height: 350px;
+    background-color: white;
 }
 
 .ticketsBox {
     height: 350px;
+    background-color: white;
+}
+
+.assigmentsBox {
+    background-color: white;
+}
+
+.priceBox {
+    background-color: white;
 }
