@@ -120,7 +120,7 @@
 			</div>
 
 			<form method="post">
-				<select asp-for="SelectedStaffEmail" asp-items="@(new SelectList(Model.Staff, "PersonID", "PersonName"))">
+				<select asp-for="SelectedStaffEmail" asp-items="@(new SelectList(Model.Staff, "Email" , "PersonName"))">
 					<option value="">-- Select Staff --</option>
 				</select>
 				<button type="submit" asp-page-handler="Edit">Edit</button>
