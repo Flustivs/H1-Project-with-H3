@@ -61,6 +61,7 @@
             </a>
         </div>
 
+<<<<<<< Updated upstream
         <div class="ticketsBox">
             <a class="ticketsBoxBigtext">Billet oversigt</a>
             <hr class="ticketsBoxHR" />
@@ -81,6 +82,39 @@
                 10. Ahmed Ali
             </p>
         </div>
+=======
+	<div class="top-row">
+		<div class="priceBox">
+			<a class="priceBoxBigtext">Pris oversigt</a>
+			<hr class="priceBoxHR" />
+			<p class="priceBoxText">
+				Dagpas = @Model.Price1() DKK <br />
+				Månedpas = @Model.Price2() DKK <br />
+				Årpas = @Model.Price3() DKK
+			</p>
+			<a href="#" class="editPriceButton">
+				<span>Rediger</span>
+			</a>
+			<a href="#" class="saveButton">
+				<span>Gem</span>
+			</a>
+		</div>
+
+		<div class="ticketsBox">
+			<a class="ticketsBoxBigtext">Billet oversigt</a>
+			<hr class="ticketsBoxHR" />
+			<p class="totalTickets">
+				Købte billetter i alt: 9999
+			</p>
+			<p class="lastBoughtTickets">
+				Seneste 5 købte billetter <br />
+				@foreach (var item in Model.lastpurchase())
+				{
+					<p>@item</p>
+				}
+			</p>
+		</div>
+>>>>>>> Stashed changes
 
 
        
