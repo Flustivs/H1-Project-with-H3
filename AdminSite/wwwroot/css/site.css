@@ -36,7 +36,7 @@ hr {
 
 .maintenanceBox {
     flex: 1;
-    height: 200px;
+    height: fit-content;
     width: 300px;
     margin: 10px;
     border-radius: 10px;
@@ -100,7 +100,7 @@ hr {
 /* Open or Closed */
 .openTime {
     flex: 1;
-    height: 270px;
+    height: fit-content;
     width: 300px;
     margin: 10px;
     border-radius: 10px;
@@ -139,3 +139,4 @@ body {
     text-align: center;
     font-size: 18px;
 }
+

@@ -9,32 +9,34 @@
 </div>
 <hr />
 
-<div class="mainContainer">
-    @* Maintenance Box in the left side *@
-    <div class="leftBox">
-        <a class="leftBoxBigtext">Velkommen</a>
-        <hr class="leftBoxHR" />
-        <p class="leftBoxText">
-            @Model.GetDanish1()
-        </p>
-    </div>
+<body class="bg">
+    <div class="mainContainer">
+        @* Maintenance Box in the left side *@
+        <div class="leftBox">
+            <a class="leftBoxBigtext">Velkommen</a>
+            <hr class="leftBoxHR" />
+            <p class="leftBoxText">
+                @Model.GetDanish1()
+            </p>
+        </div>
 
-    @* News Box in the middle *@
-     <div class="middleBox">
-        <a class="middleBoxBigtext">Sikkerhed</a>
-        <hr class="middleBoxHR" />
-        <p class="middleBoxText">
-            @Model.GetDanish2()
-        </p>
-    </div>
+        @* News Box in the middle *@
+        <div class="middleBox">
+            <a class="middleBoxBigtext">Sikkerhed</a>
+            <hr class="middleBoxHR" />
+            <p class="middleBoxText">
+                @Model.GetDanish2()
+            </p>
+        </div>
 
-    @* Open or Closed Box in the right side *@
-    <div class="rightBox">
-        <a class="rightBoxBigtext">HYG DIG!</a>
-        <hr class="rightBoxHR" />
-        <p class="rightBoxText">
-            @Model.GetDanish3()
-        </p>
+        @* Open or Closed Box in the right side *@
+        <div class="rightBox">
+            <a class="rightBoxBigtext">HYG DIG!</a>
+            <hr class="rightBoxHR" />
+            <p class="rightBoxText">
+                @Model.GetDanish3()
+            </p>
+        </div>
     </div>
-</div>
+</body>
 
