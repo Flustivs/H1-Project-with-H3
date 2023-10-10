@@ -13,6 +13,7 @@ namespace AdminSite.Pages
         private readonly PersonManager _personmanager;
         private readonly LogInManager _logInManager;
         private readonly FacilityManager _facilityManager;
+        private readonly PriceManager _priceManager;
 
         // Property to hold the list of persons
         public List<Person> AllPersons { get; set; }
@@ -51,17 +52,14 @@ namespace AdminSite.Pages
         // define a property SelectedStaffId to hold the selected staff member's email:
         [BindProperty]
         public string SelectedStaffEmail { get; set; }
-		[BindProperty]
-		public string SelectedFacilityID { get; set; }
-        z
-<<<<<<< Updated upstream
-=======
-		[BindProperty(Name = "TicketAmount")]
+        [BindProperty]
+        public string SelectedFacilityID { get; set; }
+        [BindProperty(Name = "TicketAmount")]
         public int TicketAmount { get; set; }
 
 
 
->>>>>>> Stashed changes
+
         public void OnGet()
         {
             // Get staff and customer lists
@@ -89,7 +87,7 @@ namespace AdminSite.Pages
             // Get AllFacilities
             AllFacilities = _facilityManager.GetAllFacilities();
         }
-          
+
         public IActionResult OnPostEdit()
         {
             // Use _personmanager to retrieve the details of the selected staff member
@@ -104,28 +102,24 @@ namespace AdminSite.Pages
         {
             // Render a form to add a new staff member
         }
-<<<<<<< Updated upstream
+
+        public IActionResult OnPostEditF()
+        {
+            // Redirect to the EditPerson page with the selected email as a query parameter
+            return RedirectToPage("/FacilityEdit", new { SelectedFacility = SelectedFacilityID });
+        }
+
+        public IActionResult OnPostDeleteF()
+        {
+            // Redirect to a specific page after deletion (for example, back to the same page)
+            return RedirectToPage("/FacilityDelete", new { SelectedFacility = SelectedFacilityID });
+        }
+
+        public IActionResult OnPostAddNewF()
+        {
+            // Redirect to a specific page after deletion (for example, back to the same page)
+            return RedirectToPage("/FacilityAddNew");
+        }
+
     }
-=======
-
-		public IActionResult OnPostEditF()
-		{
-			// Redirect to the EditPerson page with the selected email as a query parameter
-			return RedirectToPage("/FacilityEdit", new { SelectedFacility = SelectedFacilityID });
-		}
-
-		public IActionResult OnPostDeleteF()
-		{
-			// Redirect to a specific page after deletion (for example, back to the same page)
-			return RedirectToPage("/FacilityDelete", new { SelectedFacility = SelectedFacilityID });
-		}
-
-		public IActionResult OnPostAddNewF()
-		{
-			// Redirect to a specific page after deletion (for example, back to the same page)
-			return RedirectToPage("/FacilityAddNew");
-		}
-
-	}
->>>>>>> Stashed changes
 }
