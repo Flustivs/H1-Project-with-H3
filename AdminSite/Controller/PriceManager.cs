@@ -64,5 +64,41 @@ namespace AdminSite.Controller
             }
             return _ticketvalue;
         }
+        public void UpdatePrice(int dayPass, int monthPass, int yearPass)
+        {
+			SqlConnection conn = new SqlConnection(_connectionString);
+
+            string DPass = $"UPDATE tblTicketType SET price = {dayPass} WHERE ticketTypeID = 1";
+			string MPass = $"UPDATE tblTicketType SET price = {monthPass} WHERE ticketTypeID = 2";
+			string YPass = $"UPDATE tblTicketType SET price = {yearPass} WHERE ticketTypeID = 3";
+
+			try
+			{
+                conn.Open();
+                if (dayPass != 0 && dayPass != null)
+                {
+                    SqlCommand command = new SqlCommand(DPass, conn);
+                    command.ExecuteNonQuery();
+                }
+                if (monthPass != 0 && monthPass != null)
+                {
+                    SqlCommand command = new SqlCommand(MPass, conn);
+                    command.ExecuteNonQuery();
+                }
+                if (yearPass != 0 && yearPass != null)
+                {
+                    SqlCommand command = new SqlCommand(YPass, conn);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
