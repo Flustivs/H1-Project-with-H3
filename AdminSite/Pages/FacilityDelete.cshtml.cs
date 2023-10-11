@@ -17,28 +17,32 @@ namespace AdminSite.Pages
             _facilityManager = facilityManager;
             FacilityToDelete = new Facility();
         }
+        
         [BindProperty(SupportsGet = true)]
         public string SelectedFacility { get; set; }
 
 
         public void OnGet()
         {
-                List<Facility> facilities = _facilityManager.GetAllFacilities();
-            FacilityToDelete = facilities.FirstOrDefault(f => f.FacilityName == SelectedFacility) ?? new Facility();
+
+            List<Facility> facilities = _facilityManager.GetAllFacilities();
+            FacilityToDelete = facilities.FirstOrDefault(f => f.FacilityName == SelectedFacility);
         }
-public IActionResult OnPostDeleteFacility()
-{
-    
-    int facilityIDtoDelete = FacilityToDelete.FacilityID;
-    _facilityManager.DeleteFacility(facilityIDtoDelete);
+        public IActionResult OnPostDeleteFacility()
+        {
+            List<Facility> facilities = _facilityManager.GetAllFacilities();
+            FacilityToDelete = facilities.FirstOrDefault(f => f.FacilityName == SelectedFacility);
+            int facilityIDtoDelete = FacilityToDelete.FacilityID;
+            _facilityManager.DeleteFacility(facilityIDtoDelete);
 
-    return RedirectToPage("/AdminPanel");
-}
+            return RedirectToPage("/AdminPanel");
+        }
 
-public IActionResult OnPostCancel()
-{
+        public IActionResult OnPostCancel()
+        {
 
-    return RedirectToPage("/AdminPanel");
+            return RedirectToPage("/AdminPanel");
+
         }
     }
 }

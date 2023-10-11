@@ -1,256 +1,258 @@
 @page
 @model AdminSite.Pages.AdminPanelModel
 @{
-	ViewData["Title"] = "Admin Panel - SFFP";
+    ViewData["Title"] = "Admin Panel - SFFP";
 }
 
 <div class="header">
-	<h1>Admin Panel</h1>
+    <h1>Admin Panel</h1>
 </div>
-<hr class="allHR"/>
+<hr class="allHR" />
 
 
 @* <html></html> *@
 <head>
-	<style>
-		table {
-			font-family: Arial, Helvetica, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-			table td, table th {
-				border: 1px solid #000000;
-				padding: 8px;
-			}
+            table td, table th {
+                border: 1px solid #000000;
+                padding: 8px;
+            }
 
-			table tr:nth-child(even) {
-				background-color: #a7b9f1;
-			}
+            table tr:nth-child(even) {
+                background-color: #a7b9f1;
+            }
 
-			table tr:hover {
-				background-color: #6585e7;
-			}
+            table tr:hover {
+                background-color: #6585e7;
+            }
 
-			table th {
-				padding-top: 12px;
-				padding-bottom: 12px;
-				text-align: center;
-				background-color: #4169e1;
-				color: white;
-			}
-	</style>
+            table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: #4169e1;
+                color: white;
+            }
+    </style>
 
 </head>
 <body class="bg">
-	<div class="top-row">
-		<div class="priceBox">
-			<a class="priceBoxBigtext">Pris oversigt</a>
-			<hr class="priceBoxHR" />
-			<p class="priceBoxText">
-				Dagpas = @Model.Price1() DKK <br />
-				Månedpas = @Model.Price2() DKK <br />
-				Årpas = @Model.Price3() DKK
-			</p>
-			<form method="post">
-				<button type="submit" asp-page-handler="PriceEdit">Edit</button>
-			</form>
-		</div>
 
-		<div class="ticketsBox">
-			<a class="ticketsBoxBigtext">Billet oversigt</a>
-			<hr class="ticketsBoxHR" />
-			<p class="totalTickets">
-				Købte billetter i alt: 9999
-			</p>
-			<p class="lastBoughtTickets">
-				@foreach (var item in Model.lastpurchase())
-				{
-					<p>@item</p>
-				}
-			</p>
-		</div>
-	</div>
+    <div class="top-row">
+        <div class="priceBox">
+            <a class="priceBoxBigtext">Pris oversigt</a>
+            <hr class="priceBoxHR" />
+            <p class="priceBoxText">
+                Dagpas = @Model.Price1() DKK <br />
+                Månedpas = @Model.Price2() DKK <br />
+                Årpas = @Model.Price3() DKK
+            </p>
+            <form method="post">
+                <button type="submit" asp-page-handler="PriceEdit">Edit</button>
+            </form>
+        </div>
 
-
-	<div class="bottom-row">
-		<div class="workersBox">
-			<a class="workersBoxBigtext">Oversigt over ansatte</a>
-			<hr class="workersBoxHR" />
-			<div style="max-height: 200px; overflow-y: auto;">
-				<table>
-						<tr>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Email</th>
-						</tr>
-					<tbody>
-						@if (Model.Staff != null)
-						{
-							foreach (var person in Model.Staff)
-							{
-								<tr>
-									<td>@person.PersonID</td>
-									<td>@person.PersonName</td>
-									<td>@person.Email</td>
-								</tr>
-							}
-						}
-						else
-						{
-							<tr>
-								<td colspan="3">No person found.</td>
-							</tr>
-						}
-					</tbody>
-				</table>
-			</div>
-
-			<br />
-
-			<form method="post">
-				<select asp-for="SelectedStaffEmail" asp-items="@(new SelectList(Model.Staff, "Email" , "PersonName"))">
-					<option value="">-- Select Staff --</option>
-				</select>
-				<button type="submit" asp-page-handler="Edit">Edit</button>
-				<button type="submit" asp-page-handler="Delete">Delete</button>
-				@* <button type="submit" asp-page-handler="Save">Save</button> *@
-				<button type="submit" asp-page-handler="AddNew">Add New Staff</button>
-			</form>
+        <div class="ticketsBox">
+            <a class="ticketsBoxBigtext">Billet oversigt</a>
+            <hr class="ticketsBoxHR" />
+            <p class="totalTickets">
+                Købte billetter i alt: 9999
+            </p>
+            <p class="lastBoughtTickets">
+                @foreach (var item in Model.lastpurchase())
+                {
+                <p>@item</p>
+                }
+            </p>
+        </div>
+    </div>
 
 
-			</a>
-			
-		</div>
+    <div class="bottom-row">
+        <div class="workersBox">
+            <a class="workersBoxBigtext">Oversigt over ansatte</a>
+            <hr class="workersBoxHR" />
+            <div style="max-height: 200px; overflow-y: auto;">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                    <tbody>
+                        @if (Model.Staff != null)
+                        {
+                            foreach (var person in Model.Staff)
+                            {
+                                <tr>
+                                    <td>@person.PersonID</td>
+                                    <td>@person.PersonName</td>
+                                    <td>@person.Email</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3">No person found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-		<div class="assigmentsBox">
-			<a class="assigmentsBoxBigtext">Forlystelser</a>
-			<hr class="assigmentsBoxHR" />
-			<div style="max-height: 200px; overflow-y: auto;">
-				<table>
-					<tr>
-						<th>Facility ID</th>
-						<th>Facility Name</th>
-						<th>Next Maintenance</th>
-						<th>Staff</th>
+            <br />
 
-					</tr>
+            <form method="post">
+                <select asp-for="SelectedStaffEmail" asp-items="@(new SelectList(Model.Staff, "Email" , "PersonName"))">
+                    <option value="">-- Select Staff --</option>
+                </select>
+                <button type="submit" asp-page-handler="Edit">Edit</button>
+                <button type="submit" asp-page-handler="Delete">Delete</button>
+                @* <button type="submit" asp-page-handler="Save">Save</button> *@
+                <button type="submit" asp-page-handler="AddNew">Add New Staff</button>
+            </form>
 
-					@if (Model.AllFacilities != null)
-					{
 
-						foreach (var facility in Model.AllFacilities)
-						{
+            </a>
 
-							<tr>
-								<td>@facility.FacilityID</td>
-								<td>@facility.FacilityName</td>
-								<td>@facility.NextMaintenanceDate</td>
-								<td>
-									@foreach (var staffName in facility.MaintenanceStaff)
-									{
-										@staffName  <br />
-									}
-								</td>
-							</tr>
-						}
-					}
-					else
-					{
-						<tr>
-							<td colspan="4">No facility found.</td>
-						</tr>
-					}
-				</table>
-				</div>
-<br />
+        </div>
 
-@* asp-items="@(new SelectList(Model.AllFacilities, "FacilityName", "FacilityName"))" is specifying the list of items for the dropdown. 
-	Here, Model.AllFacilities is a list of facilities, and the SelectList constructor parameters are as follows:
+        <div class="assigmentsBox">
+            <a class="assigmentsBoxBigtext">Forlystelser</a>
+            <hr class="assigmentsBoxHR" />
+            <div style="max-height: 200px; overflow-y: auto;">
+                <table>
+                    <tr>
+                        <th>Facility ID</th>
+                        <th>Facility Name</th>
+                        <th>Next Maintenance</th>
+                        <th>Staff</th>
 
-	Model.AllFacilities: This is the collection of items you want to display in the dropdown, in this case, a list of facilities.
-	"FacilityName" (first parameter): This specifies the name of the property in each facility object that will be used as the value for each dropdown item.
-	"FacilityName" (second parameter): This specifies the name of the property in each facility object that will be displayed as the text for each dropdown item. *@
+                    </tr>
 
-<form method="post">
-	<select asp-for="SelectedFacilityName" asp-items="@(new SelectList(Model.AllFacilities, "FacilityName", "FacilityName"))">
-		<option value="">-- Select Facility --</option>
-	</select>
-	<button type="submit" asp-page-handler="EditF">Edit</button>
-	<button type="submit" asp-page-handler="DeleteF">Delete</button>
-	@* <button type="submit" asp-page-handler="Save">Save</button> *@
-	<button type="submit" asp-page-handler="AddNewF">Add New Staff</button>
-</form>
+                    @if (Model.AllFacilities != null)
+                    {
 
-			
-		</div>
+                        foreach (var facility in Model.AllFacilities)
+                        {
 
-	</div>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+                            <tr>
+                                <td>@facility.FacilityID</td>
+                                <td>@facility.FacilityName</td>
+                                <td>@facility.NextMaintenanceDate</td>
+                                <td>
+                                    @foreach (var staffName in facility.MaintenanceStaff)
+                                    {
+                                        @staffName  <br />
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4">No facility found.</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <br />
 
-	<div class="top-row">
-		<div class="priceBox">
-			<a class="priceBoxBigtext">Customer Overview</a>
-			<hr class="priceBoxHR" />
-			<p class="priceBoxText">
-				<div style="max-height: 200px; overflow-y: auto;">
-					<table>
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Email</th>
-							</tr>
-						</thead>
-						<tbody>
-							@if (Model.Customers != null)
-							{
-								foreach (var person in Model.Customers)
-								{
-									<tr>
-										<td>@person.PersonID</td>
-										<td>@person.PersonName</td>
-										<td>@person.Email</td>
-									</tr>
-								}
-							}
-							else
-							{
-								<tr>
-									<td colspan="3">No person found.</td>
-								</tr>
-							}
-						</tbody>
-					</table>
-				</div>
+            @* asp-items="@(new SelectList(Model.AllFacilities, "FacilityName", "FacilityName"))" is specifying the list of items for the dropdown.
+            Here, Model.AllFacilities is a list of facilities, and the SelectList constructor parameters are as follows:
 
-			</p>
+            Model.AllFacilities: This is the collection of items you want to display in the dropdown, in this case, a list of facilities.
+            "FacilityName" (first parameter): This specifies the name of the property in each facility object that will be used as the value for each dropdown item.
+            "FacilityName" (second parameter): This specifies the name of the property in each facility object that will be displayed as the text for each dropdown item. *@
 
-			</a>
-		</div>
+            <form method="post">
+                <select asp-for="SelectedFacilityName" asp-items="@(new SelectList(Model.AllFacilities, "FacilityName", "FacilityName"))">
+                    <option value="">-- Select Facility --</option>
+                </select>
+                <button type="submit" asp-page-handler="EditF">Edit</button>
+                <button type="submit" asp-page-handler="DeleteF">Delete</button>
+                @* <button type="submit" asp-page-handler="Save">Save</button> *@
+                <button type="submit" asp-page-handler="AddNewF">Add New Staff</button>
+            </form>
 
-		<div class="ticketsBox">
-			<a class="ticketsBoxBigtext">PlaceHolder</a>
-			<hr class="ticketsBoxHR" />
-			<p class="totalTickets">
 
-			</p>
-			<p class="lastBoughtTickets">
-				<br />
-				<br />
-				<br />
+        </div>
 
-			</p>
-		</div>
-	</div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="top-row">
+        <div class="priceBox">
+            <a class="priceBoxBigtext">Customer Overview</a>
+            <hr class="priceBoxHR" />
+            <p class="priceBoxText">
+                <div style="max-height: 200px; overflow-y: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Customers != null)
+                            {
+                                foreach (var person in Model.Customers)
+                                {
+                                    <tr>
+                                        <td>@person.PersonID</td>
+                                        <td>@person.PersonName</td>
+                                        <td>@person.Email</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="3">No person found.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </p>
+
+            </a>
+        </div>
+
+        <div class="ticketsBox">
+            <a class="ticketsBoxBigtext">PlaceHolder</a>
+            <hr class="ticketsBoxHR" />
+            <p class="totalTickets">
+
+            </p>
+            <p class="lastBoughtTickets">
+                <br />
+                <br />
+                <br />
+
+            </p>
+        </div>
+    </div>
+
 
 </body>
 
