@@ -162,8 +162,27 @@
 						</tr>
 					}
 				</table>
+				</div>
+<br />
 
-			</div>
+@* asp-items="@(new SelectList(Model.AllFacilities, "FacilityName", "FacilityName"))" is specifying the list of items for the dropdown. 
+	Here, Model.AllFacilities is a list of facilities, and the SelectList constructor parameters are as follows:
+
+	Model.AllFacilities: This is the collection of items you want to display in the dropdown, in this case, a list of facilities.
+	"FacilityName" (first parameter): This specifies the name of the property in each facility object that will be used as the value for each dropdown item.
+	"FacilityName" (second parameter): This specifies the name of the property in each facility object that will be displayed as the text for each dropdown item. *@
+
+<form method="post">
+	<select asp-for="SelectedFacilityName" asp-items="@(new SelectList(Model.AllFacilities, "FacilityName", "FacilityName"))">
+		<option value="">-- Select Facility --</option>
+	</select>
+	<button type="submit" asp-page-handler="EditF">Edit</button>
+	<button type="submit" asp-page-handler="DeleteF">Delete</button>
+	@* <button type="submit" asp-page-handler="Save">Save</button> *@
+	<button type="submit" asp-page-handler="AddNewF">Add New Staff</button>
+</form>
+
+			
 		</div>
 
 	</div>
