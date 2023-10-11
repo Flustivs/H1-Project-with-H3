@@ -14,8 +14,8 @@ hr {
 /* Entre Billet */
 
 .dailyPassHR {
-    width: 550px;
-    margin: 30px;
+    width: 90%;
+    margin: 30px auto;
 }
 
 .dailyPass {
@@ -69,8 +69,8 @@ hr {
     }
 
 .monthlyPassHR {
-    width: 550px;
-    margin: 30px;
+    width: 90%;
+    margin: 30px auto;
 }
 
 /* Open or Closed */
@@ -94,8 +94,8 @@ hr {
     }
 
 .yearlyPassHR {
-    width: 550px;
-    margin: 30px;
+    width: 90%;
+    margin: 30px auto;
 }
 
 .yearlyPassBigtext {

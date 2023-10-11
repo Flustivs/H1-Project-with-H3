@@ -23,7 +23,22 @@ namespace AdminSite.Pages
 
         public void OnGet()
         {
+                List<Facility> facilities = _facilityManager.GetAllFacilities();
+            FacilityToDelete = facilities.FirstOrDefault(f => f.FacilityName == SelectedFacility) ?? new Facility();
+        }
+public IActionResult OnPostDeleteFacility()
+{
+    
+    int facilityIDtoDelete = FacilityToDelete.FacilityID;
+    _facilityManager.DeleteFacility(facilityIDtoDelete);
 
+    return RedirectToPage("/AdminPanel");
+}
+
+public IActionResult OnPostCancel()
+{
+
+    return RedirectToPage("/AdminPanel");
         }
     }
 }

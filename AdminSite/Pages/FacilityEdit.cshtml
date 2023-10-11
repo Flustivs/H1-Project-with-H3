@@ -1,4 +1,32 @@
 ﻿@page
 @model AdminSite.Pages.FacilityEditModel
 @{
+    ViewData["Title"] = "Admin Panel - Edit Facility";
 }
+<div class="header">
+    <h1>Edit Facility</h1>
+</div>
+<hr />
+
+<form method="post">
+    <input type="hidden" asp-for="FacilityToEdit.FacilityID" />
+    <input type="hidden" asp-for="SelectedFacility" />
+    
+    <div class="form-group">
+        <label for="Facility Name">New Facility Name</label>
+        <input type="text" class="form-control" placeholder="@Model.FacilityToEdit.FacilityName" asp-for="NewName" />
+    </div>
+
+    <div class="form-group">
+        <label for="Facility Pic URL">New Facility Pic URL</label>
+        <input type="FacilityPicURL" class="form-control" asp-for="NewURL" />
+    </div>
+
+    <div class="form-group">
+        <label for="NextMaintenanceDate">New Maintenance Date</label>
+        <input type="NextMaintenanceDate" class="form-control" asp-for="NewDate" />
+    </div>
+
+    <button type="submit" asp-page-handler="SaveChanges">Save changes</button>
+    <button type="submit" asp-page-handler="Cancel">Cancel</button>
+</form>
