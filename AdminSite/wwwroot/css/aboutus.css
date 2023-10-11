@@ -1,8 +1,8 @@
 ﻿/* Left Box */
 
 .leftBoxHR {
-    width: 550px;
-    margin: 30px;
+    width: 90%;
+    margin: 30px auto;
 }
 
 .leftBox {
@@ -56,8 +56,8 @@
     }
 
 .middleBoxHR {
-    width: 550px;
-    margin: 30px;
+    width: 90%;
+    margin: 30px auto;
 }
 
 /* Open or Closed */
@@ -81,8 +81,8 @@
     }
 
 .rightBoxHR {
-    width: 550px;
-    margin: 30px;
+    width: 90%;
+    margin: 30px auto;
 }
 
 .rightBoxBigtext {
