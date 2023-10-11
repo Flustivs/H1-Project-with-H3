@@ -10,7 +10,7 @@ namespace AdminSite.Controller
     /// </summary>
     public class AboutController
     {
-        static string _columnValue;
+        private string _columnValue;
         private readonly string _connectionString;
 
         // To get the default connection string that is holded in the appsettings.json file

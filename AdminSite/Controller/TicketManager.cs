@@ -8,7 +8,7 @@ namespace AdminSite.Controller
 	{
 		private readonly string _connectionString;
 		private List<string> _lastPurchase;
-		string _person;
+		private string _person;
 
 		public TicketManager(IOptions<ConnectionString> connectionString)
 		{
