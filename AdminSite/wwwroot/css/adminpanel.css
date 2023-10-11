@@ -13,8 +13,8 @@
 }
 
 .priceBoxHR, .assigmentsBoxHR {
-    width: 860px;
-    margin: 30px;
+    width: 90%;
+    margin: 30px auto;
 }
 
 .priceBox{
@@ -51,8 +51,8 @@
 }
 
 .ticketsBoxHR, .workersBoxHR {
-    width: 860px;
-    margin: 30px;
+    width: 90%;
+    margin: 30px auto;
 }
 
 
