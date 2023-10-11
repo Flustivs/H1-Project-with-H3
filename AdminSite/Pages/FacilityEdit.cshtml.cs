@@ -31,13 +31,16 @@ namespace AdminSite.Pages
         public void OnGet()
         {
             List<Facility> facilities = _facilityManager.GetAllFacilities();
-            FacilityToEdit = facilities.FirstOrDefault(f => f.FacilityName == SelectedFacility) ?? new Facility();
+
+            FacilityToEdit = facilities.FirstOrDefault(f => f.FacilityName == SelectedFacility) ;
         }
 
         public IActionResult OnPostSaveChanges()
         {
+
+            List<Facility> facilities = _facilityManager.GetAllFacilities();
+            FacilityToEdit = facilities.FirstOrDefault(f => f.FacilityName == SelectedFacility);
             int facilityIDtoEdit = FacilityToEdit.FacilityID;
-            _facilityManager.DeleteFacility(facilityIDtoEdit);
 
             _facilityManager.EditFacility(facilityIDtoEdit, NewName, NewURL, NewDate);
 
