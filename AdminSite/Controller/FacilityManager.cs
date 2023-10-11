@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace AdminSite.Controller
 {
     public class FacilityManager : LogInManager
