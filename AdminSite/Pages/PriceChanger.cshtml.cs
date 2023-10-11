@@ -4,9 +4,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdminSite.Pages
 {
+    /// <summary>
+    /// This class is for the menu where you can change your prices of the passes
+    /// </summary>
     public class PriceChangerModel : PageModel
     {
         private readonly PriceManager _priceManager;
+        [BindProperty]
+        public int dayPass { get; set; }
+        [BindProperty]
+        public int monthPass { get; set; }
+        [BindProperty]
+        public int yearPass { get; set; }
         public PriceChangerModel(PriceManager priceManager)
         {
             _priceManager = priceManager;
@@ -27,9 +36,11 @@ namespace AdminSite.Pages
             return price;
 
         }
+        // This is an onpost method meaning that it will only be runned when for example our submit button
         public IActionResult OnPost()
         {
-            return Page();
+            _priceManager.UpdatePrice(dayPass, monthPass, yearPass);
+            return RedirectToPage("/AdminPanel");
         }
     }
 }

@@ -36,9 +36,12 @@ namespace AdminSite.Pages
             return ticketPrice;
         }
 
-        [BindProperty(Name = "TicketAmount")]
+        // Here we bind the property to the (TicketAmount get set)
+        [BindProperty]
         public int TicketAmount { get; set; }
 
+        // This method is an onpost method meaning it only reacts on the post on the webpage in this example its when the Submit button is pressed
+        // it then tells us this in the console
         public IActionResult OnPost()
         {
             Console.WriteLine("This many tickets: " +  TicketAmount + "\nThis is your orderID: " + order.OrderConnect());
