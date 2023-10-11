@@ -24,6 +24,7 @@ namespace AdminSite.Pages
 
         public void OnGet()
         {
+
             List<Facility> facilities = _facilityManager.GetAllFacilities();
             FacilityToDelete = facilities.FirstOrDefault(f => f.FacilityName == SelectedFacility);
         }
@@ -41,6 +42,7 @@ namespace AdminSite.Pages
         {
 
             return RedirectToPage("/AdminPanel");
+
         }
     }
 }

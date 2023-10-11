@@ -58,7 +58,7 @@ namespace AdminSite.Pages
         [BindProperty]
         public string SelectedStaffEmail { get; set; }
         [BindProperty]
-        public string SelectedFacilityID { get; set; }
+        public string SelectedFacilityName { get; set; }
         [BindProperty(Name = "TicketAmount")]
         public int TicketAmount { get; set; }
 
@@ -132,13 +132,13 @@ namespace AdminSite.Pages
         public IActionResult OnPostEditF()
         {
             // Redirect to the EditPerson page with the selected email as a query parameter
-            return RedirectToPage("/FacilityEdit", new { SelectedFacility = SelectedFacilityID });
+            return RedirectToPage("/FacilityEdit", new { SelectedFacility = SelectedFacilityName });
         }
 
         public IActionResult OnPostDeleteF()
         {
             // Redirect to a specific page after deletion (for example, back to the same page)
-            return RedirectToPage("/FacilityDelete", new { SelectedFacility = SelectedFacilityID });
+            return RedirectToPage("/FacilityDelete", new { SelectedFacility = SelectedFacilityName });
         }
 
         public IActionResult OnPostAddNewF()

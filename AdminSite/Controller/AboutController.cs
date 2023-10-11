@@ -4,16 +4,23 @@ using Microsoft.Extensions.Options;
 
 namespace AdminSite.Controller
 {
+    /// <summary>
+    /// This class is to read the about us text from the DB and accordingly to what about us text we want,
+    /// The first 3 is the about us in English and the last 3 is the about us text but in Danish
+    /// </summary>
     public class AboutController
     {
         static string _columnValue;
         private readonly string _connectionString;
 
+        // To get the default connection string that is holded in the appsettings.json file
         public AboutController(IOptions<ConnectionString> connectionString)
         {
             _connectionString = connectionString.Value.DefaultConnection;
         }
 
+        // In this method we open the connection in a try-cath where we also switch on what we hvae gotten in our byte i
+        // the byte i is to switch on what we return rather we return the english text for box 2 or the danish text in box 3
         public string Connect(byte i)
         {
 
@@ -62,6 +69,8 @@ namespace AdminSite.Controller
             }
             return _columnValue;
         }
+
+        // This method is to read in the DB and take out the aboutUsTranslationText
         private string GetAboutUs(string box, SqlConnection conn)
         {
             SqlCommand command = new SqlCommand(box, conn);
