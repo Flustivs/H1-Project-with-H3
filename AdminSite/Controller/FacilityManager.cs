@@ -17,7 +17,13 @@ namespace AdminSite.Controller
             _connectionString = connectionString.Value.DefaultConnection;
         }
 
-        private List<string> GetMaintenanceStaff(int facilityID)
+        /// <summary>
+	/// Use FacilityID to retrieve all staff that are responsible for facility
+	/// return a list of staff names
+	/// </summary>
+	/// <param name="facilityID"></param>
+	/// <returns></returns>
+	private List<string> GetMaintenanceStaff(int facilityID)
         {
             List<Person> maintenanceStaff = new List<Person>();
 
